@@ -1,28 +1,20 @@
 {
-  "name": "client",
+  "name": "react-tailwind-css-starter-pack",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^6.5.1",
-    "@tanstack/react-query": "^5.28.6",
-    "@tanstack/react-query-devtools": "^5.28.6",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "axios": "^1.6.8",
-    "mdb-react-ui-kit": "^7.2.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-hot-toast": "^2.4.1",
-    "react-icons": "^5.0.1",
-    "react-responsive-carousel": "^3.2.22",
-     "@ramonak/react-progress-bar": "^5.0.3",
+    "@ramonak/react-progress-bar": "^5.0.3",
     "@reduxjs/toolkit": "^1.9.5",
+    "axios": "^1.4.0",
     "bcryptjs": "^2.4.3",
     "concurrently": "^8.0.1",
+    "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
+    "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.3",
     "react-hook-form": "^7.44.3",
+    "react-hot-toast": "^2.4.1",
+    "react-icons": "^4.8.0",
     "react-loading-skeleton": "^3.3.1",
     "react-otp-input": "^3.0.2",
     "react-rating-stars-component": "^2.2.0",
@@ -39,11 +31,20 @@
     "video-react": "^0.16.0",
     "web-vitals": "^2.1.4"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thepranaygupta/react-tailwind-css-starter-pack.git"
+  },
+  "author": "Pranay Gupta",
+  "bugs": {
+    "url": "https://github.com/thepranaygupta/react-tailwind-css-starter-pack/issues"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "cd server && npm run dev",
+    "dev": "concurrently -n \"client,server\" -c \"bgBlue,bgYellow\" \"npm start\" \"npm run server\""
   },
   "eslintConfig": {
     "extends": [
@@ -64,9 +65,7 @@
     ]
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.19",
-    "daisyui": "^4.7.3",
-    "postcss": "^8.4.38",
-    "tailwindcss": "^3.4.1"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "tailwindcss": "^3.2.7"
   }
 }

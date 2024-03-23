@@ -42,10 +42,11 @@ export const sidebarLinks = [
     type: ACCOUNT_TYPE.STUDENT,
     icon: "VscBookmark",
   },
-  {
-    name: "Admin Panel",
-    path: "/dashboard/admin-panel",
-    type: ACCOUNT_TYPE.ADMIN,
-    icon: "VscHistory",
-  },
+  // {
+  //   name: "Purchase History",
+  //   path: "/dashboard/purchase-history",
+  //   type: ACCOUNT_TYPE.STUDENT,
+  //   icon: "VscHistory",
+  // },
+
 ];

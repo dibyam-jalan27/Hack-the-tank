@@ -1,7 +1,7 @@
 import { apiConnector } from "../apiConnector";
 import { studentEndpoints } from "../apis";
 import { toast } from "react-hot-toast";
-import rzplogo from "../../public/rajaranilogo.webp";
+import rzplogo from "../../assets/Images/rzp.png";
 import { resetCart } from "../../slices/cartSlice";
 
 
