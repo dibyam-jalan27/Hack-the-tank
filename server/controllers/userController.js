@@ -22,9 +22,12 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
 exports.loginUser = catchAsyncErrors(async (req, res, next) => {
   const { email, password } = req.body;
   //cheak if email and password is entered by user
+
   if (!email || !password) {
     return next(new ErrorHandler("Please enter email & password", 400));
   }
+
+  const temp = await User.find().select("+password");
 
   //Finding user in database
   const user = await User.findOne({ email }).select("+password");
