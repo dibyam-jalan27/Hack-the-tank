@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import ReviewModal from '../Components/core/ViewCourse/ReviewModal';
-import VideoDetailsSidebar from '../Components/core/ViewCourse/VideoDetailsSidebar';
+import ReviewModal from '../components/core/ViewCourse/ReviewModal';
+import VideoDetailsSidebar from '../components/core/ViewCourse/VideoDetailsSidebar';
 import { getFullDetailsOfCourse } from '../services/operations/courseDetailsAPI';
 
 const ViewCourse = () => {
