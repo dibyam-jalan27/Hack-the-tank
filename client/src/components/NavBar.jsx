@@ -3,28 +3,26 @@ import '../components/css/NavBar.css';
 function NavBar() {
   return (
     <div>
-      <header class="header">
+      <header className="header">
 
-    <div class="header-1">
+    <div className="header-1">
 
-        <a href="#" class="logo"> <img src="./rajaranilogo.webp" alt="" /> </a>
+        <a href="#" className="logo"> <img src="./rajaranilogo.webp" alt="" /> </a>
 
-        <form action="" class="search-form">
+        <form action="" className="search-form">
             <input type="search" name="" placeholder="search here..." id="search-box" />
-            <label for="search-box" class="fas fa-search"></label>
+            <label for="search-box" className="fas fa-search"></label>
         </form>
 
-        <div class="icons">
-            <div id="search-btn" class="fas fa-search"></div>
-            <a href="#" class="fas fa-heart"></a>
-            <a href="#" class="fas fa-shopping-cart"></a>
-            <div id="login-btn" class="fas fa-user"></div>
+        <div className="icons">
+            <div id="search-btn" className="fas fa-search"></div>
+            <div id="login-btn" className="fas fa-user"></div>
         </div>
 
     </div>
 
-    <div class="header-2">
-        <nav class="navbar">
+    <div className="header-2">
+        <nav className="navbar">
             <a href="#home">home</a>
             <a href="#featured">featured</a>
             <a href="#arrivals">arrivals</a>
@@ -35,12 +33,12 @@ function NavBar() {
 
 </header>
 
-<nav class="bottom-navbar">
-    <a href="#home" class="fas fa-home"></a>
-    <a href="#featured" class="fas fa-list"></a>
-    <a href="#arrivals" class="fas fa-tags"></a>
-    <a href="#reviews" class="fas fa-comments"></a>
-    <a href="#blogs" class="fas fa-blog"></a>
+<nav className="bottom-navbar">
+    <a href="#home" className="fas fa-home"></a>
+    <a href="#featured" className="fas fa-list"></a>
+    <a href="#arrivals" className="fas fa-tags"></a>
+    <a href="#reviews" className="fas fa-comments"></a>
+    <a href="#blogs" className="fas fa-blog"></a>
 </nav>
 
     </div>
