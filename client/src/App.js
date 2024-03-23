@@ -8,6 +8,7 @@ import Review from "./components/Review";
 import { Toaster } from "react-hot-toast";
 import CourseDetails from "./components/CourseDetails";
 import CommunityForum from "./components/CommunityForum";
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/review" element={<Review />}></Route>
           <Route path="/course-details" element={<CourseDetails />}></Route>
           <Route path="/community-forum" element={<CommunityForum />}></Route>
+          <Route path="/navbar" element={<NavBar/>} ></Route>
           <Route path="/chat-window" element={<chatWindow />}></Route>
         </Routes>
       </BrowserRouter>
