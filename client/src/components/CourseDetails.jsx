@@ -1,48 +1,70 @@
 import React from 'react';
+import '../components/css/courseDetails.css';
 
 function CourseDetails() {
   return (
-    <>
-        <div class="course-container">
-    <section>
-  <div class="banner">
-    <div class="content">
-        <h1>Catchy Headline</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur, leo nec consectetur interdum, est neque elementum diam, quis eleifend odio magna eget metus.</p>
-        <div class="btn-box">
-        <button class="btn">Learn More</button>
-        <button class="btn">Get Started</button>
-        </div>
+   <div>
+       <div className="container">      
       </div>
-    <div class="video-container">
-      <video autoplay loop muted poster="poster.jpg">
-        <source src="your-video.mp4" type="video/mp4"/>
-      </video>
-    </div>
-  </div>
-</section>
 
-<section>
-    <div class="border-box">
-        <div class="section">
-          <img src="happy-students.jpg" alt="Happy Students Icon"/>
-          <h3>Happy Students</h3>
-          <p>10,000+</p>
+      {/* Fixed Top */}
+
+      {/* Section */}
+      <section className="sub-banner bg-image" style={{ backgroundImage: "url('https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg')" }}>
+        <div className="overlay"></div>
+        <div className="container">
+          <div className="title-wrapper">
+            <h3>My First Bootstrap Page</h3>
+          </div>
         </div>
-        <div class="section">
-          <img src="lectures.jpg" alt="Lectures Icon"/>
-          <h3>Total Lectures</h3>
-          <p>500</p>
-        </div>
-        <div class="section">
-          <img src="contents.jpg" alt="Course Contents Icon"/>
-          <h3>Course Contents</h3>
-          <p>30 Modules</p>
+      </section>
+      {/* Section End */}
+
+      <div className="course-in-detail">
+        <div className="container">
+          <div className="row">
+            {/* Course details */}
+            <div className="col-md-12">
+              <div className="card left">
+                <div className="course-title-single">
+                  <h1 className="bold">UI-UX Web Design, Graphic Design</h1>
+                  {/* Course features */}
+                  <div className="course-widget-price d-none d-sm-block">
+                    <h4 className="course-title">COURSE FEATURES</h4>
+                    <ul>
+                      {/* List items */}
+                    </ul>
+                    <h5 className="bt-course">Course Price: 270.00 <span className="small"> (INR)</span></h5>
+                    <a className="flat-button bg-orange btn btn-block" href="#">Enroll this Course</a>
+                  </div>
+                  <div className="entry-content">
+                    {/* Course content */}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Different features */}
+            <div className="col-md-12 our-features">
+              <h3 className="headline text-center ">Why we are Different</h3>
+              <div className="row">
+                {/* Feature items */}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-</section>
-</div>
-    </>
+
+      {/* Course materials */}
+      <section className="bg-light course-materials">
+        <div className="container">
+          <h3 className="headline text-center ">Course Materials</h3>
+          <div className="row">
+            {/* Material items */}
+          </div>
+        </div>
+      </section>
+      </div>
   )
 }
 

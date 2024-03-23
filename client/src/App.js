@@ -8,6 +8,8 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Review from "./components/Review";
 import { Toaster } from "react-hot-toast";
+import CourseDetails from "./components/CourseDetails";
+import CommunityForum from "./components/CommunityForum";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -28,6 +30,9 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/review" element={<Review />}></Route>
+          <Route path="/course-details" element={<CourseDetails />}></Route>
+          <Route path="/community-forum" element={<CommunityForum />}></Route>
+          <Route path="/chat-window" element={<chatWindow />}></Route>
         </Routes>
       </BrowserRouter>
       <Toaster
