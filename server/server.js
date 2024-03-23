@@ -1,19 +1,28 @@
-const express = require("express");
-// const cors = require("cors");
+const app = require("./app");
+const dotenv = require("dotenv");
+const connectDatabase = require("./config/db");
 
-const app = express();
-const port = 5000;
-
-// app.use(
-//   cors({
-//     origin: "http://localhost:5173",
-//   })
-// );
-
-app.get("/", (req, res) => {
-  res.send("Hello, world!");
+//Handle Uncaught Exceptions
+process.on("uncaughtException", (err) => {
+  console.log(`Error: ${err.message}`);
+  console.log(`Shutting down the server due to Uncaught Exception`);
+  process.exit(1);
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+dotenv.config({ path: "/config/config.env" });
+
+//connect to database
+connectDatabase();
+
+app.listen(process.env.PORT, () => {
+  console.log(`Server is running on port ${process.env.PORT}`);
+});
+
+//Unhandled Promise Rejection
+process.on("unhandledRejection", (err) => {
+  console.log(`Error: ${err.message}`);
+  console.log(`Shutting down the server due to Unhandled Promise Rejection`);
+  server.close(() => {
+    process.exit(1);
+  });
 });
