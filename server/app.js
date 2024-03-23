@@ -1,28 +1,31 @@
 const express = require("express");
 const app = express();
-const errrMiddleware = require("./middleware/error");
+const errorMiddleware = require("./middleware/error");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
-const cors = require("cors");
 const path = require("path");
 
-//CORS
-app.use(cors());
+//config
+if (process.env.NODE_ENV !== "PRODUCTION") {
+  require("dotenv").config({ path: "./config/config.env" });
+}
 
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //Route imports
+const userRoute = require("./routes/userRoute");
 
-//Error Middleware
-app.use(errrMiddleware);
+app.use("/api/v1", userRoute);
 
-// Making Build Folder as Public
-app.use(express.static(path.join(__dirname, "build")));
+app.use(express.static(path.join(__dirname, "../frontend/build")));
 
-app.get("/", function (req, res) {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"));
 });
+
+//Middleware for error handling
+app.use(errorMiddleware);
 
 module.exports = app;
