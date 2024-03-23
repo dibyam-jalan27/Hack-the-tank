@@ -1,6 +1,6 @@
 import React from "react"
 import { LearningGridData } from "../../../data/aboutPageData"
-import HighLightText from "../HomePage/HighlightText"
+import HighLightText from "../HomePage/HighLightText"
 import CTAButton from "../../common/CTAButton"
 
 const LearningGrid = () => {

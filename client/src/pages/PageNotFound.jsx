@@ -1,5 +1,5 @@
 import React from "react"
-import HighLightText from "../components/core/HomePage/HighlightText.jsx"
+import HighLightText from "../components/core/HomePage/HighLightText"
 
 const PageNotFound = () => {
   return (

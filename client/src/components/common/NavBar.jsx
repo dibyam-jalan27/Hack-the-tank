@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react"
 import { Link, matchPath, useLocation, useNavigate } from "react-router-dom"
-import logo from "../../assets/Logo/rajarani.webp"
 import { NavbarLinks } from "../../data/navbar-links"
 import { useDispatch, useSelector } from "react-redux"
 import { ACCOUNT_TYPE } from "../../utils/constants"

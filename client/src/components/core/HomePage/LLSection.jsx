@@ -1,5 +1,5 @@
 import React from "react"
-import HighLightText from "./HighlightText"
+import HighLightText from "./HighLightText"
 import progress from "../../../assets/Images/Know_your_progress.svg"
 import compare from "../../../assets/Images/Compare_with_others.svg"
 import plan from "../../../assets/Images/Plan_your_lessons.svg"

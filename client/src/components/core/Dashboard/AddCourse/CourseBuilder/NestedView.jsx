@@ -9,7 +9,7 @@ import {
   deleteSubSection,
 } from "../../../../../services/operations/courseDetailsAPI"
 import { FaExpand, FaPlus } from "react-icons/fa"
-import SubSectionModal from "./SubsectionModal"
+import SubSectionModal from "./SubSectionModal"
 import ConfirmationModal from "../../../../common/ConfirmationModal"
 import { setCourse } from "../../../../../slices/courseSlice"
 
