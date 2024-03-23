@@ -62,6 +62,14 @@ function App() {
           }
         ></Route>
         <Route
+          path="/community"
+          element={
+            <PrivateRoute>
+              <Community />
+            </PrivateRoute>
+          }
+        ></Route>
+        <Route
           path="/forgot-password"
           element={
             <OpenRoute>
@@ -128,14 +136,6 @@ function App() {
             </>
           )}
         </Route>
-        <Route
-          path="/community"
-          element={
-            <PrivateRoute>
-              <Community />
-            </PrivateRoute>
-          }
-        />
         <Route path="/chat" element={<Chat />} />
         <Route path="*" element={<PageNotFound />}></Route>
       </Routes>

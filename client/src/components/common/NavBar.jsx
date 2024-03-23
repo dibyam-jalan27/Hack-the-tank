@@ -113,6 +113,11 @@ export const Navbar = () => {
                 </li>
               )
             })}
+            <li>
+              <Link to="community" className="text-richblack-800">
+                Community
+              </Link>
+            </li>
           </ul>
         </nav>
 
