@@ -13,6 +13,7 @@ function App() {
       <Route path="/forgot" element={<Forgot/>}/>
       <Route path="/signup" element={<Signup/>}/>
       <Route path="/reset-password" element={<ResetPassword/>}/>
+      <Route path='/review' element={<Review/>}></Route>
     </Routes>
 </BrowserRouter>
   );

@@ -14,7 +14,7 @@ function ResetPassword() {
          <h2>Reset Password</h2>
          <form action="">
              <div class="input-box">
-                 <span>New Password</span>
+                 <span>New Password</span>-
                  <input type="password" name="newpassword" />
              </div>
              <div class="input-box">
