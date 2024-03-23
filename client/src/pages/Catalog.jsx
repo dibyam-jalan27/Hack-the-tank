@@ -55,7 +55,7 @@ const Catalog = () => {
               <p>/</p>
               <p className="text-yellow-50">{selectedCategory?.name}</p>
             </div>
-            <h1 className="text-3xl md1:text-4xl font-semibold leading-[2.75rem] text-richblack-5">
+            <h1 className="text-3xl font-semibold leading-[2.75rem] text-richblack-5 md1:text-4xl">
               {selectedCategory?.name}
             </h1>
             <p className="self-stretch  text-base font-medium text-richblack-300 ">
@@ -65,7 +65,7 @@ const Catalog = () => {
           <div className="flex min-w-[765px] flex-col px-[2rem] py-8 lg:px-[7.5rem]">
             {data?.selectedCourses.length > 0 && (
               <div>
-                <h1 className="pb-4 text-3xl md1:text-4xl font-semibold leading-[2.75rem] text-richblack-5">
+                <h1 className="pb-4 text-3xl font-semibold leading-[2.75rem] text-richblack-5 md1:text-4xl">
                   Courses to get you started
                 </h1>
                 <CourseSlider courses={data?.selectedCourses} />
@@ -73,7 +73,7 @@ const Catalog = () => {
             )}
             {data?.differentCourses.length > 0 && (
               <div>
-                <h1 className="pb-4 text-3xl md1:text-4xl font-semibold leading-[2.75rem] text-richblack-5">
+                <h1 className="pb-4 text-3xl font-semibold leading-[2.75rem] text-richblack-5 md1:text-4xl">
                   Top Courses
                 </h1>
                 <CourseSlider courses={data?.differentCourses} />
@@ -81,7 +81,7 @@ const Catalog = () => {
             )}
             {data?.mostSellingCourses.length > 0 && (
               <div>
-                <h1 className="pb-4 text-3xl md1:text-4xl font-semibold leading-[2.75rem] text-richblack-5">
+                <h1 className="pb-4 text-3xl font-semibold leading-[2.75rem] text-richblack-5 md1:text-4xl">
                   Frequently Bought
                 </h1>
                 <CourseSlider courses={data?.mostSellingCourses} />

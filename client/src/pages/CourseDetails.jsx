@@ -54,10 +54,9 @@ const CourseDetails = ({ isStudent }) => {
 
   //console.log(course)
   return !course ? (
-   <div className="flex items-center justify-center h-[calc(100vh-3.5rem)]">
-
-    <Loader />
-   </div>
+    <div className="flex h-[calc(100vh-3.5rem)] items-center justify-center">
+      <Loader />
+    </div>
   ) : (
     <>
       <div className="flex items-start gap-2 bg-richblack-800 px-12 pt-2 text-richblack-300 lg:px-28">
@@ -73,7 +72,7 @@ const CourseDetails = ({ isStudent }) => {
             <h1 className="text-4xl font-semibold leading-[2.75rem] text-richblack-5">
               {course.courseName}
             </h1>
-            <p className="self-stretch pr-2 break-words text-base font-medium text-richblack-300">
+            <p className="self-stretch break-words pr-2 text-base font-medium text-richblack-300">
               {course.description}
             </p>
             <div className="flex items-center justify-start gap-2 text-base font-normal text-richblack-25">
@@ -205,12 +204,14 @@ const CourseDetails = ({ isStudent }) => {
           </p>
         </div>
       </div>
-      {course?.ratingAndReview && course?.ratingAndReview.length>0 && <div className="px-12 py-5 lg:px-28">
-        <p className="text-2xl font-medium text-richblack-5 ">
-          Reviews from other learners
-        </p>
-        <ReviewSlider reviews={course?.ratingAndReview} />
-      </div>}
+      {course?.ratingAndReview && course?.ratingAndReview.length > 0 && (
+        <div className="px-12 py-5 lg:px-28">
+          <p className="text-2xl font-medium text-richblack-5 ">
+            Reviews from other learners
+          </p>
+          <ReviewSlider reviews={course?.ratingAndReview} />
+        </div>
+      )}
     </>
   )
 }
