@@ -14,7 +14,7 @@ function CourseDetails() {
         <div className="overlay"></div>
         <div className="container">
           <div className="title-wrapper">
-            <h3>My First Bootstrap Page</h3>
+            <h3></h3>
           </div>
         </div>
       </section>
@@ -27,7 +27,7 @@ function CourseDetails() {
             <div className="col-md-12">
               <div className="card left">
                 <div className="course-title-single">
-                  <h1 className="bold">UI-UX Web Design, Graphic Design</h1>
+                  <h1 className="bold">Tailoring Course</h1>
                   {/* Course features */}
                   <div className="course-widget-price d-none d-sm-block">
                     <h4 className="course-title">COURSE FEATURES</h4>
@@ -36,6 +36,7 @@ function CourseDetails() {
                     </ul>
                     <h5 className="bt-course">Course Price: 270.00 <span className="small"> (INR)</span></h5>
                     <a className="flat-button bg-orange btn btn-block" href="#">Enroll this Course</a>
+                    <a className="flat-button bg-orange btn btn-block" href="#">Add to Wishlist</a>
                   </div>
                   <div className="entry-content">
                     {/* Course content */}
