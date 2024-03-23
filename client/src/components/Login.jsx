@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 function Login() {
 
     return (
-        <div>
+                <div>
             <section>
                 <div class="image-box">
                     <img src="./login_img.png" alt="" />
@@ -30,7 +30,7 @@ function Login() {
                                 <input type="submit" value="Login" name="login" />
                             </div>
                             <div class="input-box">
-                                <p>Don't have an account?<a href="#"> Sign up</a></p>
+                                <p>Don't have an account?<NavLink to="/signup">Click Here</NavLink></p>
                             </div>
                             <div class="input-box">
                                 <p>Forgot Password ?  <NavLink to="/forgot">Click Here</NavLink></p>

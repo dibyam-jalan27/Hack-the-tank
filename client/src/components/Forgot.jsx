@@ -22,7 +22,7 @@ function Forgot() {
                                 <input type="submit" value="Send me" name="login" />
                             </div>
                             <div class="input-box">
-                                <p>Don't have an account?<a href="#"> Sign up</a></p>
+                            <p>Don't have an account?<NavLink to="/signup">Click Here</NavLink></p>
                             </div>
                             <div class="input-box">
                                 <p>Go to login ?  <NavLink to="/login">Click Here</NavLink></p>
