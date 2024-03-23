@@ -47,10 +47,10 @@ function Home() {
             </Link>
 
             <div className='text-center text-3xl md:text-4xl font-semibold mt-7'>
-                Empower Your Future With <HighlightText text={"Coding Skills"}/>
+            Craft Your Future with <HighlightText text={"Tailoring Expertise"}/>
             </div>
             <div className=' mt-4 w-[90%] text-left md:text-center text-sm md:text-lg font-bold text-richblack-300'>
-            With our online coding courses, you can learn at your own pace, from anywhere in the world, and get access to a wealth of resources, including hands-on projects, quizzes, and personalized feedback from instructors. 
+            Unlock limitless learning opportunities with our Online Tailoring Courses. Study at your own pace, from anywhere, and gain access to a rich array of resources, including practical projects and personalized instructor feedback.
             </div>
 
             <div className='flex flex-row gap-7 mt-8'>
@@ -78,7 +78,7 @@ function Home() {
                     <div className=' font-semibold text-2xl lg:text-4xl sm:w-full'>
                         Unlock Your
                         <HighlightText text={"coding potential"}/>
-                        with our online courses
+                         with our online courses
                     </div>
                 }
                 subheading = {
