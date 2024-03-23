@@ -11,6 +11,7 @@ import CommunityForum from "./components/CommunityForum";
 import NavBar from "./components/NavBar";
 
 import Footer from "./components/Footer";
+import Certificate from "./components/Certificate";
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
           <Route path="/community-forum" element={<CommunityForum />}></Route>
           <Route path="/navbar" element={<NavBar/>} ></Route>
           <Route path="/chat-window" element={<chatWindow />}></Route>
-          
+          <Route path="/certificate" element={<Certificate />}></Route>
           <Route path="/footer" element={<Footer />}></Route>
         </Routes>
       </BrowserRouter>
