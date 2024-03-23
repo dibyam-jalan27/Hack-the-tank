@@ -7,7 +7,7 @@ import { fetchCourseDetails } from '../services/operations/courseDetailsAPI';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
-import RatingStars from '../Components/common/RatingStars';
+import RatingStars from '../components/common/RatingStars';
 import GetAvgRating from '../utils/avgRating';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
 import { BsGlobe } from 'react-icons/bs';

@@ -7,7 +7,7 @@ import {Provider} from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import rootReducer from "./reducers";
 import { Toaster } from "react-hot-toast";
-import ScrollToTop from "./Components/ScrollToTop";
+import ScrollToTop from "./components/ScrollToTop";
 import swDev from "./swDev";
 
 const store= configureStore({
