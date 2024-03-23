@@ -16,12 +16,12 @@
     font-family: 'Poppins', sans-serif;
     text-decoration: none;
 }
-html,body{
+.body{
     display: grid;
     height: 100%;
     place-items:center;
     text-align: center;
-    background: #000;
+
 }
 .g-review-container{
     width: 400px;
