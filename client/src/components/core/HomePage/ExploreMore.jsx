@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { HomePageExplore as data } from "../../../data/homepage-explore"
-import HighLightText from "./HighLightText"
+import HighLightText from "./HighlightText"
 import CourseCard from "./CourseCard"
 
 const ExploreMore = () => {

@@ -1,5 +1,6 @@
 import React from "react"
-import HighLightText from "../components/core/HomePage/HighLightText"
+import HighLightText from "../components/core/HomePage/HighlightText.jsx"
+
 const PageNotFound = () => {
   return (
     <div className="flex h-[calc(100vh-3.5rem)] min-h-[500px] w-[100vw] min-w-[600px] flex-col items-center justify-center gap-8 bg-richblack-800 font-mono ">

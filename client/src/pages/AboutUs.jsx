@@ -1,6 +1,6 @@
 import React from "react"
 import Footer from "../components/common/Footer"
-import HighLightText from "../components/core/HomePage/HighLightText"
+import HighLightText from "../components/core/HomePage/HighlightText"
 import img1 from "../assets/Images/aboutus1.webp"
 import img2 from "../assets/Images/aboutus2.webp"
 import img3 from "../assets/Images/aboutus3.webp"
