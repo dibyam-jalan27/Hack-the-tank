@@ -1,9 +1,6 @@
 import React from "react"
 import Footer from "../components/common/Footer"
 import HighLightText from "../components/core/HomePage/HighLightText"
-import img1 from "../assets/Images/aboutus1.webp"
-import img2 from "../assets/Images/aboutus2.webp"
-import img3 from "../assets/Images/aboutus3.webp"
 import foundingImg from "../assets/Images/FoundingStory.png"
 import { FaQuoteRight, FaQuoteLeft } from "react-icons/fa"
 import Stats from "../components/core/AboutPage/Stats"
@@ -18,22 +15,39 @@ const AboutUs = () => {
 
         <div className="flex w-3/5 flex-col items-center gap-4 px-14 ">
           <p className="text-center text-4xl font-semibold leading-[2.75rem]">
-            Driving Innovation in Online Education for a{" "}
-            <HighLightText text={"Brighter Future"}></HighLightText>
+            EMPOWER YOUR SUCCESS WITH US <br></br>
+            <HighLightText
+              text={"Elevate Your Stitching Game with Unique & Trendy Styles"}
+            ></HighLightText>
           </p>
 
           <div className="self-stretch text-center font-inter text-base font-medium text-richblack-300 ">
-            Studynotion is at the forefront of driving innovation in online
-            education. We're passionate about creating a brighter future by
-            offering cutting-edge courses, leveraging emerging technologies, and
-            nurturing a vibrant learning community.
+            "Discover Your Unique Style: Join us at Radha Rani Coaching for an
+            immersive stitching experience. Learn essential techniques, gain
+            confidence, and unleash your creativity. Our dedicated instructors
+            will guide you every step of the way. Be a trendsetter, not a
+            follower. Let's create the fashion of the future together, thread by
+            thread. Novice or pro, our supportive community welcomes you.
+            Embrace stitching and craft something extraordinary with us."
           </div>
         </div>
 
-        <div className="relative flex translate-y-[60px] justify-center gap-6 ">
-          <img src={img1} className="z-10 " alt="first" />
-          <img src={img2} className="z-10" alt="second" />
-          <img src={img3} className="z-10" alt="third" />
+        <div className="relative flex translate-y-[60px] justify-center ">
+          <img
+            src="https://diy-assets.classplus.co/_next/image?url=https://ali-cdn-diy-public.classplus.co/prod/Untitled%20design_1700752379501.png&w=1920&q=75"
+            className=" z-10 h-[19rem] w-[25rem] rounded-l-[23rem] object-cover  "
+            alt="first"
+          />
+          <img
+            src="https://diy-assets.classplus.co/_next/image?url=https://ali-cdn-diy-public.classplus.co/prod/Surat%20Ke%20Teacher,%20Bharat%20ka%20Future_1700821782209.png&w=1920&q=75"
+            className="z-10 h-[19rem] w-[25rem] object-cover"
+            alt="second"
+          />
+          <img
+            src="https://diy-assets.classplus.co/_next/image?url=https://ali-cdn-diy-public.classplus.co/prod/Untitled%20design_1700661306421.png&w=1920&q=75"
+            className="z-10 h-[19rem] w-[25rem] rounded-r-[23rem] object-cover"
+            alt="third"
+          />
           <div
             className="absolute top-[-8px] z-[0] h-[19rem] w-[25rem] rounded-[23rem] opacity-50 blur-[34px]"
             style={{
@@ -77,20 +91,26 @@ const AboutUs = () => {
           </p>
           <div className="flex flex-col gap-4 self-stretch font-inter text-base font-medium text-richblack-300 ">
             <p>
-              Our e-learning platform was born out of a shared vision and
-              passion for transforming education. It all began with a group of
-              educators, technologists, and lifelong learners who recognized the
-              need for accessible, flexible, and high-quality learning
-              opportunities in a rapidly evolving digital world.
+              Thread by Thread, We Create Trends. At our stitching workshops, we
+              invite you to immerse yourself in the art of needle and thread. We
+              believe that fashion isn't just about following trends; it's about
+              creating your own unique style. In our hands-on classes, you'll
+              learn the essential techniques and gain the confidence to turn
+              your creative visions into reality. Our passionate instructors are
+              dedicated to guiding you through every step of the stitching
+              process, helping you bring your ideas to life.
             </p>
 
             <p>
-              As experienced educators ourselves, we witnessed firsthand the
-              limitations and challenges of traditional education systems. We
-              believed that education should not be confined to the walls of a
-              classroom or restricted by geographical boundaries. We envisioned
-              a platform that could bridge these gaps and empower individuals
-              from all walks of life to unlock their full potential.
+              We don't just follow trends; we set them. Join us in this journey
+              of self-expression, where you'll craft one-of-a-kind pieces that
+              reflect your individuality. Be a trendsetter, not a trend
+              follower. Together, thread by thread, we'll create the fashion of
+              the future. Whether you're a novice or an experienced stitcher,
+              our welcoming community is here to inspire and support you. Join
+              us in the world of stitching, where creativity knows no bounds,
+              and where your unique style takes center stage. Embrace the art of
+              stitching, and let's craft something extraordinary together.
             </p>
           </div>
         </div>

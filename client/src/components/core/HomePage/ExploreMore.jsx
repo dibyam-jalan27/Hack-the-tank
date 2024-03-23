@@ -18,11 +18,11 @@ const ExploreMore = () => {
     <div className="flex translate-y-24 flex-col gap-4 font-inter ">
       <div className="first-letter text-center font-inter text-4xl font-semibold not-italic  leading-[2.75rem]">
         Unlock the
-        <HighLightText text={" Power of Code"} />
+        <HighLightText text={" Art of Tailoring"} />
       </div>
 
       <div className="mx-auto flex flex-col self-stretch text-center font-inter text-base font-medium text-richblack-300">
-        Learn to Build Anything You Can Imagine
+        Master the Craft of Creating Anything You Can Envision
       </div>
 
       <div className="mx-auto mb-10 flex flex-wrap justify-center rounded-3xl border-richblack-100 bg-richblack-700 px-1 py-1 sm:flex-row">

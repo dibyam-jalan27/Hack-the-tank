@@ -35,14 +35,14 @@ const Home = () => {
 
           <div className="flex flex-col items-center gap-4 ">
             <div className="first-letter text-center text-4xl font-semibold  leading-[2.75rem]">
-              Empower Your Future with
-              <HighLightText text={" Coding Skills"} />
+              Craft Your Future with
+              <HighLightText text={" Tailoring Expertise"} />
             </div>
             <div className="flex flex-col self-stretch text-center font-inter text-base font-medium text-richblack-300 ">
-              With our online coding courses, you can learn at your own pace,
-              from anywhere in the world, and get access to a wealth of
-              resources, including hands-on projects, quizzes, and personalized
-              feedback from instructors.
+              Unlock limitless learning opportunities with our online coding
+              courses. Study at your own pace, from anywhere, and gain access to
+              a rich array of resources, including practical projects, and
+              personalized instructor feedback.
             </div>
           </div>
 
@@ -65,70 +65,74 @@ const Home = () => {
           </video>
         </div>
 
-        <CodeBlock
-          position={"flex-row"}
-          beforehead={"Unlock your"}
-          highlight={" coding potential "}
-          afterhead={"with our online course"}
-          subheading={
-            "Our courses are designed and taught by industry experts who have years of experience in coding and are passionate about sharing their knowledge with you."
-          }
-          cta1={{
-            text: "Try it Yourself",
-            linkto: "/signup",
-            active: true,
-          }}
-          cta2={{
-            text: "Learn More",
-            linkto: "/login",
-            active: false,
-          }}
-          code={`<!DOCTYPE html>\n
-            <html>\n
-            <head><title>Example</title>\n
-            <link rel="stylesheet"href="styles.css">\n
-            </head>\n
-            <body>\n
-            <h1><a href="/"> Hello 😀 learn HTML </h1>\n
-            <h1><a href="/"> from 🙂 zero </h1>\n
-            <h1><a href="/"> to 😎 hero </h1>\n
-            </body>
-            `}
-          bg={"linear-gradient(144deg, #8A2BE2 0%, #FFA500 50%, #F8F8FF 100%)"}
-          codecolor={"#ffffff"}
-        />
-        <CodeBlock
-          position={"flex-row-reverse"}
-          beforehead={"Start"}
-          highlight={" coding in seconds"}
-          afterhead={""}
-          subheading={
-            "Go ahead, give it a try. Our hands-on learning environment means you'll be writing real code from your very first lesson.."
-          }
-          cta1={{
-            text: "Continue Lesson",
-            linkto: "/signup",
-            active: true,
-          }}
-          cta2={{
-            text: "Learn More",
-            linkto: "/login",
-            active: false,
-          }}
-          code={`<!DOCTYPE html>\n
-                  <html>\n
-                  <head><title>Example</title>\n
-                  <link rel="stylesheet"href="styles.css">\n
-                  </head>\n
-                  <body>\n
-                  <h1><a href="/"> Hello 😀 learn HTML </h1>\n
-                  <h1><a href="/"> from  🙂 zero </h1>\n
-                  <h1><a href="/"> to    😎 hero </h1>\n
-                  </body>
-                  `}
-          bg={"linear-gradient(138deg, #1FA2FF 0%, #12D8FA 50%, #A6FFCB 100%)"}
-          codecolor={"#3ee4ec"}
-        />
+        <div className="flex flex-row items-start">
+          <CodeBlock
+            position={"flex-row"}
+            beforehead={"Unleash Your Creativity with Our"}
+            highlight={" Tailoring Course "}
+            afterhead={""}
+            subheading={
+              "Our tailoring courses are meticulously crafted and instructed by seasoned professionals who possess extensive expertise in the art of tailoring. They are driven by a deep passion to impart their wisdom and skills to aspiring tailors like you."
+            }
+            cta1={{
+              text: "Try it Yourself",
+              linkto: "/signup",
+              active: true,
+            }}
+            cta2={{
+              text: "Learn More",
+              linkto: "/login",
+              active: false,
+            }}
+            // code={`<!DOCTYPE html>\n
+            //   <html>\n
+            //   <head><title>Example</title>\n
+            //   <link rel="stylesheet"href="styles.css">\n
+            //   </head>\n
+            //   <body>\n
+            //   <h1><a href="/"> Hello 😀 learn HTML </h1>\n
+            //   <h1><a href="/"> from 🙂 zero </h1>\n
+            //   <h1><a href="/"> to 😎 hero </h1>\n
+            //   </body>
+            //   `}
+            // bg={"linear-gradient(144deg, #8A2BE2 0%, #FFA500 50%, #F8F8FF 100%)"}
+            codecolor={"#ffffff"}
+          />
+          <CodeBlock
+            position={"flex-row-reverse"}
+            beforehead={"Start Your Tailoring Journey in"}
+            highlight={" Seconds"}
+            afterhead={""}
+            subheading={
+              "Go ahead, give it a try. Our hands-on learning environment means you'll be stitching real designs from your very first lesson..."
+            }
+            cta1={{
+              text: "Continue Lesson",
+              linkto: "/signup",
+              active: true,
+            }}
+            cta2={{
+              text: "Learn More",
+              linkto: "/login",
+              active: false,
+            }}
+            code={`<!DOCTYPE html>\n
+          <html>\n
+          <head><title>Example</title>\n
+          <link rel="stylesheet"href="styles.css">\n
+          </head>\n
+          <body>\n
+          <h1><a href="/"> Hello 😀 learn HTML </h1>\n
+          <h1><a href="/"> from  🙂 zero </h1>\n
+          <h1><a href="/"> to    😎 hero </h1>\n
+          </body>
+          `}
+            bg={
+              "linear-gradient(138deg, #1FA2FF 0%, #12D8FA 50%, #A6FFCB 100%)"
+            }
+            codecolor={"#3ee4ec"}
+          />
+        </div>
 
         <ExploreMore />
       </div>

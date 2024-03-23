@@ -8,19 +8,20 @@ const contactDetails = [
     icon: "HiChatBubbleLeftRight",
     heading: "Chat on us",
     description: "Our friendly team is here to help.",
-    details: "studynotionvp@gmail.com",
+    details: "rajaranicoaching@gmail.com",
   },
   {
     icon: "BiWorld",
     heading: "Visit us",
     description: "Come and say hello at our office HQ.",
-    details: "E1-306, Vadodara, Gujarat-390007",
+    details:
+      "D Gate, FF, Pramukhchhaya Society, Yogi Chowk, Opp. Yogi Arcade, Punagam, Surat, Gujarat-395010",
   },
   {
     icon: "IoCall",
     heading: "Call us",
     description: "Mon - Fri From 8am to 5pm",
-    details: "+123 456 7869",
+    details: "+91 6351112680",
   },
 ]
 

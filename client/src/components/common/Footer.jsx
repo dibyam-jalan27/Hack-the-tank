@@ -20,13 +20,17 @@ const Community = ["Forums", "Chapters", "Events"]
 
 const Footer = () => {
   return (
-    <div className="bg-richblack-800">
+    <div className="bg-[#f5f5f5]">
       <div className="relative mx-auto flex w-11/12 max-w-maxContent items-center justify-between gap-8 py-14 leading-6 text-richblack-400 lg:flex-row">
         <div className="flex w-[100%] flex-col border-b border-richblack-700 pb-5 lg:flex-row">
           {/* Section 1 */}
           <div className="flex flex-row flex-wrap justify-between gap-3 pl-3 lg:w-[50%] lg:border-r lg:border-richblack-700 lg:pr-5">
             <div className="mb-7 flex w-[30%] flex-col gap-3 lg:w-[30%] lg:pl-0">
-              <img src={Logo} alt="" className="object-contain" />
+              <img
+                src="https://diy-assets.classplus.co/_next/image?url=https://ali-cdn-diy-public.classplus.co/prod/2_1699159409371.png&w=1920&q=75"
+                alt=""
+                className="object-contain"
+              />
               <h1 className="text-[16px] font-semibold text-richblack-50">
                 Company
               </h1>
@@ -170,7 +174,7 @@ const Footer = () => {
 
           {/* 👻👻👻 add link to your name that takes to your portfolio or linkedin */}
           <div className="text-center">
-            Made with ❤️ By Vinars Patel © 2023 Studynotion
+            Made with ❤️ By Team Striker © 2024 | All rights reserved
           </div>
         </div>
       </div>

@@ -2,7 +2,6 @@ import React from "react"
 import CTAButton from "../../common/CTAButton"
 import HighLightText from "./HighLightText"
 import { FaArrowRight } from "react-icons/fa"
-import { TypeAnimation } from "react-type-animation"
 import "./cb.css"
 
 const CodeBlock = ({
@@ -20,7 +19,7 @@ const CodeBlock = ({
     <div
       className={`jj flex ${position} w-fit items-center justify-around py-14`}
     >
-      <div className="flex w-[40%] justify-center">
+      <div className="flex w-[70%] justify-center">
         <div className={`flex max-w-[900px] flex-col gap-3`}>
           <div className="first-letter font-inter text-4xl font-semibold not-italic leading-[2.75rem]  text-white">
             {beforehead}
@@ -46,7 +45,7 @@ const CodeBlock = ({
         </div>
       </div>
 
-      <div
+      {/* <div
         className="relative flex min-w-[450px] max-w-[720px] justify-center gap-1 border border-black p-2 py-8"
         style={{
           background:
@@ -93,7 +92,7 @@ const CodeBlock = ({
           className="absolute -left-1 top-[-1rem] h-[19rem] w-[25rem] rounded-[23rem] opacity-20 blur-[34px]"
           style={{ background: `${bg}` }}
         ></div>
-      </div>
+      </div> */}
     </div>
   )
 }

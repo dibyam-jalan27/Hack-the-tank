@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { Link, matchPath, useLocation, useNavigate } from "react-router-dom"
-import logo from "../../assets/Logo/Logo-Full-Light.png"
+import logo from "../../assets/Logo/rajarani.webp"
 import { NavbarLinks } from "../../data/navbar-links"
 import { useDispatch, useSelector } from "react-redux"
 import { ACCOUNT_TYPE } from "../../utils/constants"
@@ -9,6 +9,7 @@ import { PiShoppingCart } from "react-icons/pi"
 import { apiConnector } from "../../services/apiConnector"
 import { categories } from "../../services/apis"
 import { IoIosArrowDropdownCircle } from "react-icons/io"
+import { FaRocketchat } from "react-icons/fa6"
 import { logout } from "../../services/operations/authAPI"
 
 export const Navbar = () => {
@@ -53,14 +54,19 @@ export const Navbar = () => {
     fetchData()
   }, [])
   return (
-    <div className="flex items-center justify-center border-b-[1px] border-richblack-700 p-4 md:max-h-14">
+    <div className="flex items-center justify-center border-b-[1px] border-richblack-700 bg-[#f5f5f5] p-4 md:max-h-14">
       <div className="flex w-11/12 flex-col items-center justify-between  gap-4 md:flex-row">
         <Link to={"/"}>
-          <img src={logo} alt="logo-full-light" width={160} height={42} />
+          <img
+            src="https://diy-assets.classplus.co/_next/image?url=https://ali-cdn-diy-public.classplus.co/prod/2_1699159409371.png&w=1920&q=75"
+            alt="logo-full-light"
+            width={160}
+            height={42}
+          />
         </Link>
 
         <nav>
-          <ul className="flex flex-row gap-x-6 text-richblack-25 ">
+          <ul className="flex flex-row gap-x-6 text-richblack-800 ">
             {NavbarLinks.map((ele, index) => {
               return (
                 <li key={index}>
@@ -96,7 +102,9 @@ export const Navbar = () => {
                     <Link to={ele?.path}>
                       <p
                         className={`${
-                          matchRoute(ele.path) ? "text-yellow-25" : "text-white"
+                          matchRoute(ele.path)
+                            ? "text-[#007a7a]"
+                            : "text-black-800"
                         }`}
                       >
                         {ele.title}
@@ -119,7 +127,7 @@ export const Navbar = () => {
           {token === null && (
             <Link
               to={"/login"}
-              className="rounded-md border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100"
+              className="rounded-md border border-[#00b8b8] bg-[#007a7a] px-[12px] py-[8px] text-richblack-100"
             >
               Log In
             </Link>
@@ -136,6 +144,9 @@ export const Navbar = () => {
 
           {token !== null && <ProfileDropDown />}
         </div>
+      </div>
+      <div className="border-fill fixed bottom-10 right-10 cursor-pointer border-[#007a7a] p-1 text-6xl text-white">
+        <FaRocketchat />
       </div>
     </div>
   )
