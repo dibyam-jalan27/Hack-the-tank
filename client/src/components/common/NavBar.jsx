@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import logo from "../../assets/Logo/Logo-Full-Light.png"
+import logo from "../../assets/Logo/RajaRani.webp"
 import { Link, matchPath } from 'react-router-dom'
 import {NavbarLinks} from '../../data/navbar-links'
 import { useLocation} from 'react-router-dom'
@@ -92,10 +92,10 @@ const NavBar = ({setProgress}) => {
     
     
   return (
-    <div className={` flex sm:relative bg-richblack-900 w-screen relative z-50 h-14 items-center justify-center border-b-[1px] border-b-richblack-700 translate-y-  transition-all duration-500`}>
+    <div className={` flex sm:relative bg-richblack-300 w-screen relative z-50 h-14 items-center justify-center border-b-[1px] border-b-richblack-700 translate-y-  transition-all duration-500`}>
         <div className='flex w-11/12 max-w-maxContent items-center justify-between'>
             <Link to='/' onClick={()=>{dispatch(setProgress(100))}}>
-                <img src={logo} width={160} alt="Study Notion" height={42}></img>
+                <img src={logo} width={160} alt="Raja Rani" height={42}></img>
                 </Link>
                 {/* mobile Navbar */}
                 {
@@ -103,7 +103,7 @@ const NavBar = ({setProgress}) => {
                         <div className=' md:hidden'>
                         <Link to='/dashboard/cart' className=' relative left-10' onClick={()=>{dispatch(setProgress(100))}} >
                             <div className=''>
-                            <TiShoppingCart className=' fill-richblack-25 w-8 h-8' />
+                            <TiShoppingCart className=' fill-richblack-100 w-8 h-8' />
                             </div>
                             {
                                 totalItems>0 && (
