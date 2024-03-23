@@ -133,7 +133,7 @@ section {
 
 .header .header-1 .icons div:hover,
 .header .header-1 .icons a:hover {
-    color: var(--color-primary);
+    color: var(--color-orange-light);
 }
 
 #search-btn {
@@ -173,7 +173,7 @@ padding: 0 100px;
 
 .bottom-navbar {
     text-align: center;
-    background: var(--color-primary);
+    background: var(--color-orange);
     position: fixed;
     bottom: 0;
     left: 0;
@@ -189,7 +189,7 @@ padding: 0 100px;
 }
 
 .bottom-navbar a:hover {
-    background: var(--dark-color);
+    background: var(--color-orange-light);
 }
 
 @media (max-width:768px) {
