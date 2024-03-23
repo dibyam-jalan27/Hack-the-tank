@@ -24,9 +24,12 @@ import MyCourses from "./components/core/Dashboard/MyCourses"
 import Catalog from "./pages/Catalog"
 import CourseDetails from "./pages/CourseDetails"
 import ViewCourse from "./pages/ViewCourse"
+import Chat from "./components/common/Chat"
+import Community from "./pages/Community"
 
 function App() {
   const { user } = useSelector((state) => state.profile)
+
   return (
     <div className="flex min-h-screen w-screen flex-col bg-richblack-900 font-inter">
       <Navbar />
@@ -125,7 +128,15 @@ function App() {
             </>
           )}
         </Route>
-
+        <Route
+          path="/community"
+          element={
+            <PrivateRoute>
+              <Community />
+            </PrivateRoute>
+          }
+        />
+        <Route path="/chat" element={<Chat />} />
         <Route path="*" element={<PageNotFound />}></Route>
       </Routes>
     </div>

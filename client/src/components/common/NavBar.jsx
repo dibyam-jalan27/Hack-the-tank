@@ -8,7 +8,7 @@ import { PiShoppingCart } from "react-icons/pi"
 import { apiConnector } from "../../services/apiConnector"
 import { categories } from "../../services/apis"
 import { IoIosArrowDropdownCircle } from "react-icons/io"
-import { FaRocketchat } from "react-icons/fa6"
+// import { FaRocketchat } from "react-icons/fa6"
 import { logout } from "../../services/operations/authAPI"
 
 export const Navbar = () => {
@@ -143,9 +143,6 @@ export const Navbar = () => {
 
           {token !== null && <ProfileDropDown />}
         </div>
-      </div>
-      <div className="border-fill fixed bottom-10 right-10 cursor-pointer border-[#007a7a] p-1 text-6xl text-white">
-        <FaRocketchat />
       </div>
     </div>
   )
