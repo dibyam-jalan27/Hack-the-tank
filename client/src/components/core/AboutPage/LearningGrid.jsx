@@ -1,99 +1,50 @@
-import React from 'react'
-import HighlightText from '../HomePage/HighlightText';
-import CTAButton from "../../core/HomePage/Button";
-
-const LearningGridArray = [
-    {
-      order: -1,
-      heading: "World-Class Learning for",
-      highlightText: "Anyone, Anywhere",
-      description:
-        "Studynotion partners with more than 275+ leading universities and companies to bring flexible, affordable, job-relevant online learning to individuals and organizations worldwide.",
-      BtnText: "Learn More",
-      BtnLink: "/",
-    },
-    {
-      order: 1,
-      heading: "Curriculum Based on Industry Needs",
-      description:
-        "Save time and money! The Belajar curriculum is made to be easier to understand and in line with industry needs.",
-    },
-    {
-      order: 2,
-      heading: "Our Learning Methods",
-      description:
-        "Studynotion partners with more than 275+ leading universities and companies to bring",
-    },
-    {
-      order: 3,
-      heading: "Certification",
-      description:
-        "Studynotion partners with more than 275+ leading universities and companies to bring",
-    },
-    {
-      order: 4,
-      heading: `Rating "Auto-grading"`,
-      description:
-        "Studynotion partners with more than 275+ leading universities and companies to bring",
-    },
-    {
-      order: 5,
-      heading: "Ready to Work",
-      description:
-        "Studynotion partners with more than 275+ leading universities and companies to bring",
-    },
-  ];
-
+import React from "react"
+import { LearningGridData } from "../../../data/aboutPageData"
+import HighLightText from "../HomePage/HighLightText"
+import CTAButton from "../../common/CTAButton"
 
 const LearningGrid = () => {
   return (
-    <div className='grid  grid-col-1 lg:grid-cols-4 mb-10 p-5 lg:w-fit'>
-    {
-        LearningGridArray.map( (card, index) => {
-            return (
-                <div
-                key={index}
-                className={`${index === 0 && "lg:col-span-2 lg:h-[280px] p-5"}
-                ${
-                    card.order % 2 === 1 ? "bg-richblack-700 lg:h-[280px] p-5" : "bg-richblack-800 lg:h-[280px] p-5"
-                }
-                ${card.order === 3 && "lg:col-start-2"}
-                ${card.order < 0 && "bg-transparent"}
-                `}
-                >
-                {
-                    card.order < 0 
-                    ? (
-                        <div className='lg:w-[90%] flex flex-col pb-5 gap-3'>
-                            <div className='text-4xl font-semibold'>
-                                {card.heading}
-                                <HighlightText text={card.highlightText} />
-                            </div>
-                            <p className='font-medium'>
-                                {card.description}
-                            </p>
-                            <div className='w-fit mt-4'>
-                                <CTAButton active={true} linkto={card.BtnLink}>
-                                    {card.BtnText}
-                                </CTAButton>
-                            </div>
-                        </div>
-                    )
-                    : (<div className='flex flex-col gap-8 p-7'>
-                        <h1 className='text-richblack-5 text-lg'>
-                            {card.heading}
-                        </h1>
-                        <p className='text-richblack-300 font-medium'>
-                            {card.description}
-                        </p>
-                    </div>)
-                }
-
-                </div>
-            )
-        } )
-    } 
-    </div>
+    <section className="mb-10 grid min-w-[160px] grid-cols-1 bg-richblack-900 py-24 lg:w-auto lg:grid-cols-4 lg:px-32">
+      {LearningGridData.map((ele, index) => {
+        return (
+          <div
+            key={index}
+            className={`mx-auto w-[50%] lg:w-full
+                           ${index === 0 && "lg:col-span-2"}
+                           ${
+                             ele.order % 2 === 1
+                               ? "bg-richblack-700 "
+                               : "bg-richblack-800"
+                           } 
+                           ${ele.order === 3 && "lg:col-start-2"}
+                        `}
+          >
+            {ele.order < 0 ? (
+              <div className="ranslate-x-[-20%] mx-auto flex flex-col gap-6 bg-richblack-900 pb-10 lg:min-w-fit  lg:translate-x-0 lg:pb-0 lg:pr-[3.25rem] ">
+                <h2 className="text-4xl font-semibold leading-[2.75rem]">
+                  {ele.heading}
+                  <HighLightText text={ele.highlightText} />
+                </h2>
+                <p>{ele.description}</p>
+                <CTAButton active={true} linkto={ele.BtnLink}>
+                  {ele.BtnText}
+                </CTAButton>
+              </div>
+            ) : (
+              <div className="mx-auto flex min-h-[250px] flex-col gap-8 p-8 lg:w-fit">
+                <h2 className="text-lg font-semibold ring-richblack-5 ">
+                  {ele.heading}
+                </h2>
+                <p className="text-sm font-normal ring-richblack-100">
+                  {ele.description}
+                </p>
+              </div>
+            )}
+          </div>
+        )
+      })}
+    </section>
   )
 }
 

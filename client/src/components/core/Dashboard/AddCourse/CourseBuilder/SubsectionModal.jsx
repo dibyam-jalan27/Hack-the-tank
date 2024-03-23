@@ -1,164 +1,191 @@
-import React from 'react'
-import { useForm } from 'react-hook-form';
-import { useEffect } from 'react';
-import toast from 'react-hot-toast';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import { createSubSection, updateSubSection } from '../../../../../services/operations/courseDetailsAPI';
-import { setCourse } from '../../../../../slices/courseSlice';
-import { RxCross1 } from 'react-icons/rx';
-import Upload from './Upload'
-import IconBtn from '../../../../common/IconBtn';
-import { useState } from 'react';
+import React, { useEffect, useState } from "react"
+import { useForm } from "react-hook-form"
+import toast from "react-hot-toast"
+import {
+  createSubSection,
+  updateSubSection,
+} from "../../../../../services/operations/courseDetailsAPI"
+import { useDispatch, useSelector } from "react-redux"
+import { setCourse } from "../../../../../slices/courseSlice"
+import UploadContent from "../UploadContent"
+import { IoMdCloseCircle } from "react-icons/io"
+import IconBtn from "../../../../common/IconButton"
 
-
-const SubsectionModal = ({
-    modalData,
-    setModalData,
-    add=false,
-    edit=false,
-    view=false
+const SubSectionModal = ({
+  modalData,
+  setModalData,
+  add = false,
+  view = false,
+  edit = false,
 }) => {
-    const { token } = useSelector((state) => state.auth);
-    const { course } = useSelector((state) => state.course);
-    const [loading, setLoading] = useState(false);
+  const {
+    register,
+    setValue,
+    getValues,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
+  const { token } = useSelector((state) => state.auth)
+  const { course } = useSelector((state) => state.course)
+  const [loading, setLoading] = useState(false)
 
-    const dispatch = useDispatch();
-    const { register, handleSubmit, formState: { errors }, setValue, getValues } = useForm();
-    useEffect (() => {
-        if (view || edit) {
-            setValue("lecture", modalData.title);
-            setValue("lectureDesc", modalData.description);
-            setValue("lectureVideo", modalData.videoUrl);
-            // console.log("useeffect modalData", modalData);
-        }
-    },[view,edit]);
-
-    const isFormUpdated = () => {
-        const currentValues = getValues();
-        if(currentValues.lecture !== modalData.title ||
-             currentValues.lectureDesc !== modalData.description ||
-              currentValues.lectureVideo !== modalData.videoUrl) {
-            return true;
-        }
-        return false;
+  const dispatch = useDispatch()
+  useEffect(() => {
+    if (edit || view) {
+      setValue("lectureTitle", modalData.title)
+      setValue("lectureDescription", modalData.description)
     }
+  }, [edit, view, setValue, modalData])
 
-    const handelEditSubsection = async (data) => {
-        const currentValues = getValues();
-        const formData = new FormData();
-        formData.append("SubsectionId", modalData._id);
-        if (currentValues.lecture !== modalData.title) {
-            formData.append("title", data.lecture);
-        }
-        if (currentValues.lectureDesc !== modalData.description) {
-            formData.append("description", data.lectureDesc);
-        }
-        if (currentValues.lectureVideo !== modalData.videoUrl) {
-        formData.append("videoFile", data.lectureVideo);
-        }
+  const isFormUpdated = () => {
+    const currentValues = getValues()
+    if (
+      currentValues.lectureTitle !== modalData.title ||
+      currentValues.lectureDescription !== modalData.description ||
+      currentValues.lectureVideo !== null
+    ) {
+      return true
+    }
+    return false
+  }
+  const closeModal = () => {
+    setModalData(null)
+  }
+  const onSubmitHandler = async (currentValues) => {
+    if (view) return
 
-        formData.append("courseId", course._id);
-        // console.log("formdata", [...formData]);
-        const result = await updateSubSection(formData, token);
+    if (edit) {
+      if (isFormUpdated()) {
+        const formData = new FormData()
+        formData.append("subSectionID", modalData._id)
+        formData.append("sectionID", modalData.sectionID)
+        formData.append("courseID", course._id)
+        if (currentValues.lectureTitle !== modalData.title) {
+          formData.append("title", currentValues.lectureTitle)
+        }
+        if (currentValues.lectureDescription !== modalData.description) {
+          formData.append("description", currentValues.lectureDescription)
+        }
+        if (currentValues.lectureVideo !== null) {
+          formData.append("video", currentValues.lectureVideo)
+        }
+        setLoading(true)
+        const result = await updateSubSection(formData, token)
         if (result) {
-            dispatch(setCourse(result));
+          dispatch(setCourse(result))
         }
-        setModalData(null);
+        //updation done so back to nested view/main site
+        setLoading(false)
+        setModalData(null)
+        return
+      } else {
+        toast.error("No changes made to the form.")
+        return
+      }
     }
 
-    const onSubmit = async (data) => {
-        if (view) {
-            return;
-        }
-        if(edit) {
-            if (!isFormUpdated()) {
-                toast.error("No changes made");
-            }
-            else {
-                handelEditSubsection(data);
-            }
-            return;
-        }
+    //add subsection
+    const formData = new FormData()
+    formData.append("sectionID", modalData)
+    formData.append("courseID", course._id)
+    formData.append("title", currentValues.lectureTitle)
+    formData.append("description", currentValues.lectureDescription)
+    formData.append("video", currentValues.lectureVideo)
 
-        const formData = new FormData();
-        formData.append("sectionId", modalData);
-        formData.append("title", data.lecture);
-        formData.append("description", data.lectureDesc);
-        formData.append("videoFile", data.lectureVideo);
-        formData.append("courseId", course._id);
-
-        console.log("formdata", [...formData]);
-        const result = await createSubSection(formData, token);
-        console.log("result", result);
-        if (result) {
-
-            dispatch(setCourse(result));
-        }
-        setModalData(null);
+    setLoading(true)
+    const result = await createSubSection(formData, token)
+    if (result) {
+      dispatch(setCourse(result))
     }
-            
+    setLoading(false)
 
+    //creation done so back to nested view/main site
+    setModalData(null)
+    return
+  }
   return (
-    <div className='fixed inset-0 z-[1000] !mt-0 grid h-screen w-screen place-items-center overflow-auto bg-white bg-opacity-10 backdrop-blur-sm'>
-        <div className='my-10 w-11/12 max-w-[700px] rounded-lg border border-richblack-400 bg-richblack-800'>
-            <div className='flex items-center justify-between rounded-t-lg bg-richblack-700 p-5'>
-                <p className='text-xl font-semibold text-richblack-5'>{view && "Viewing"} {add && "Adding"} {edit && "Editing"} Lecture</p>
-                <button onClick={() => (!loading ? setModalData(null): {})}>
-                    <RxCross1 size={20} color={"white"} />
-                </button>
-            </div>
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 px-8 py-10">
-                <Upload 
-                    name="lectureVideo"
-                    label="lectureVideo"
-                    register={register}
-                    setValue={setValue}
-                    errors={errors}
-                    video={true}
-                    viewData={view ? modalData.videoUrl: null}
-                    editData={edit ? modalData.videoUrl: null}
-                />
-                <div className='flex flex-col space-y-2'>
-                    <label className='text-sm text-richblack-5' htmlFor='lecture'>Lecture Title</label>
-                    <input disabled={view}
-                        id='lecture'
-                        placeholder='Enter Lecture Title'
-                        {...register("lecture", {required:true})}
-                        className='form-style w-full'
-                    />
-                    {errors.lectureTitle && (<span className='ml-2 text-xs tracking-wide text-pink-200'>
-                        Lecture Title is required
-                    </span>)}
-                </div>
-                <div className='flex flex-col space-y-2'>
-                    <label className='text-sm text-richblack-5'>Lecture Description</label>
-                    <textarea disabled={view}
-                        id='lectureDesc'
-                        placeholder='Enter Lecture Description'
-                        {...register("lectureDesc", {required:true})}
-                        className='form-style resize-x-none min-h-[130px] w-full'
-                    />
-                    {
-                        errors.lectureDesc && (<span className='ml-2 text-xs tracking-wide text-pink-200'>
-                            Lecture Description is required
-                        </span>)
-                    }
-                </div>
-
-                {
-                    !view && (
-                        <div className='flex justify-end'>
-                            <IconBtn 
-                                text={loading ? "Loading...": edit ? "Save Changes" : "Save"}
-                            />
-                        </div>
-                    )
-                }
-            </form>
+    <div className="fixed inset-0 z-[1000] !mt-0 grid place-items-center overflow-auto bg-white bg-opacity-10 backdrop-blur-sm">
+      <form
+        onSubmit={handleSubmit(onSubmitHandler)}
+        className="flex w-11/12 max-w-[600px] flex-col gap-6 rounded-lg border border-richblack-400 bg-richblack-800 p-6"
+      >
+        <div className="flex items-center justify-between gap-6">
+          <h2 className="text-lg ">
+            {add ? "Adding" : view ? "Viewing" : edit ? "Editing" : ""} Lecture
+          </h2>
+          <button onClick={closeModal} disabled={loading}>
+            <IoMdCloseCircle className="text-2xl text-richblack-5" />
+          </button>
         </div>
+        <div className="flex flex-col gap-6">
+          <div>
+            <UploadContent
+              name={"lectureVideo"}
+              label={"Lecture Video"}
+              register={register}
+              video={true}
+              viewData={view}
+              editData={edit || view ? modalData.videoUrl : null}
+              setValue={setValue}
+              errors={errors}
+            />
+          </div>
+          <div>
+            <label htmlFor="lectureTitle" className="labelStyle">
+              Lecture Title <sup className="text-pink-200">*</sup>{" "}
+            </label>
+            <input
+              id="lectureTitle"
+              name="lectureTitle"
+              type="text"
+              placeholder="Enter Lecture Title"
+              {...register("lectureTitle", { required: true })}
+              className="inputStyle w-full"
+            />
+            {errors.lectureTitle && (
+              <span className="mt-2 text-[12px] text-yellow-100">
+                This field is required.
+              </span>
+            )}
+          </div>
+          <div>
+            <label htmlFor="lectureDescription" className="labelStyle">
+              Lecture Description <sup className="text-pink-200">*</sup>{" "}
+            </label>
+            <textarea
+              id="lectureDescription"
+              name="lectureDescription"
+              placeholder="Enter Lecture Description"
+              {...register("lectureDescription", { required: true })}
+              className="inputStyle min-h-[140px] w-full"
+            />
+            {errors.lectureDescription && (
+              <span className="mt-2 text-[12px] text-yellow-100">
+                This field is required.
+              </span>
+            )}
+          </div>
+        </div>
+        {!view && (
+          <div className="flex gap-6">
+            <button
+              onClick={closeModal}
+              className={`flex w-fit cursor-pointer items-center gap-x-2 rounded-md bg-richblack-300 px-[20px] py-[8px] text-richblack-900`}
+              disabled={loading}
+            >
+              Cancel
+            </button>
+            <IconBtn
+              type={"submit"}
+              className="w-fit"
+              disabled={loading}
+              text={add ? "Add" : edit ? "Edit" : ""}
+            ></IconBtn>
+          </div>
+        )}
+      </form>
     </div>
   )
 }
 
-export default SubsectionModal
+export default SubSectionModal

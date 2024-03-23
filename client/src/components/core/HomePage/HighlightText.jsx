@@ -1,12 +1,17 @@
-import React from 'react'
+import React from "react"
 
-function HighlightText({text}) {
-  return (
-    <span className='bg-gradient-to-b from-[#1FA2FF] via-[#12D8FA] to-[#A6FFCB] text-transparent bg-clip-text font-bold'>
-        {" "}
-        {text}
-    </span>
-  )
+const HighLightText = ({ text, bg }) => {
+  const myStyle = {
+    background: `${
+      bg
+        ? bg
+        : "-webkit-linear-gradient(rgba(31, 162, 255, 1), rgba(18, 216, 250, 1), rgba(166, 255, 203, 1))"
+    }`,
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+  }
+
+  return <span style={myStyle}>{text}</span>
 }
 
-export default HighlightText
+export default HighLightText

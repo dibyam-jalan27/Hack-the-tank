@@ -1,26 +1,92 @@
+import React from "react"
+import { HiUsers } from "react-icons/hi"
+import { PiGitForkFill } from "react-icons/pi"
 
-const CourseCard = ({cardData,currentCard,setCurrentCard}) => {
-
+const CourseCard = ({ currCard, setCurrCard, data }) => {
   return (
-    <div>
-      
-    <button className={`flex flex-col  w-[360px] p-5 gap-1  ${currentCard===cardData.heading? "bg-white text-richblack-700 shadow-[12px_12px_0px] shadow-[#FFD60A]":"bg-richblack-700 text-richblue-100"}`} onClick={()=>{setCurrentCard(cardData.heading)}}>
+    <div
+      className={`${
+        currCard === data.heading ? " bg-white " : " bg-richblack-800 "
+      } flex flex-col justify-between md:h-[430px] md:w-[250px] lg:h-[330px] lg:w-[300px]`}
+      style={{
+        boxShadow: `${
+          currCard === data.heading ? "15px 15px 0px 0px #ffd60a " : " "
+        }`,
+      }}
+      onClick={() => {
+        setCurrCard(data.heading)
+      }}
+    >
+      <div className="flex flex-col gap-3 px-6 py-8 ">
+        <p
+          className={`${
+            currCard === data.heading
+              ? " text-richblack-800 "
+              : " text-richblack-25 "
+          } 
+                           font-inter text-xl font-semibold `}
+        >
+          {data.heading}
+        </p>
+        <p
+          className={`${
+            currCard === data.heading
+              ? " text-richblack-500 "
+              : " text-richblack-300 "
+          } 
+                           font-inter text-base font-normal `}
+        >
+          {data.description}
+        </p>
+      </div>
 
-<div className=' flex flex-col text-center p-2 border-b-2 border-richblack-100 border-dashed'>
-  <p className={` text-xl font-bold text-left mb-2 ${currentCard===cardData.heading?"text-black":"text-richblue-5 "}`}>
-    {cardData.heading}
-  </p>
-  <p className=" text-left mb-6 text-base ">
-    {cardData.description}
-  </p>
-</div>
-<div className=' flex justify-between w-full p-3'>
-  <p>{cardData.level}</p>
-  <p>{cardData.lessionNumber} Lessons</p>
-  </div>
-</button>
+      <div
+        className={
+          "mt-14 flex flex-col  justify-between gap-2 border-t-2 border-dashed border-richblack-300 px-4   pb-6 pt-2 sm:flex-row lg:flex-row "
+        }
+      >
+        <div className="flex items-center gap-2">
+          <HiUsers
+            className={`${
+              currCard === data.heading
+                ? " text-blue-300 "
+                : " text-richblack-400 "
+            } text-xl`}
+          />
+          <p
+            className={`${
+              currCard === data.heading
+                ? " text-blue-500 "
+                : " text-richblack-300 "
+            } 
+                           font-inter text-base font-normal `}
+          >
+            {data.level}
+          </p>
+        </div>
+        <div className="flex items-center justify-end gap-2">
+          <PiGitForkFill
+            className={`${
+              currCard === data.heading
+                ? " text-blue-300 "
+                : " text-richblack-400 "
+            } 
+                           rotate-180 font-inter text-2xl font-normal `}
+          />
+
+          <p
+            className={`${
+              currCard === data.heading
+                ? " text-blue-500 "
+                : " text-richblack-300 "
+            } 
+                           font-inter text-base font-normal `}
+          >
+            {data.lessionNumber} Lessons
+          </p>
+        </div>
+      </div>
     </div>
-
   )
 }
 

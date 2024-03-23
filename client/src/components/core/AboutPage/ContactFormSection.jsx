@@ -1,18 +1,16 @@
-import React from 'react'
-import ContactUsForm from '../../contactUs/ContactUsForm'
+import React from "react"
+import ContactUsForm from "../../common/ContactUsForm"
 
 const ContactFormSection = () => {
   return (
-    <div className='mx-auto'>
-      <h1 className='text-center text-4xl font-semibold'>
+    <div className="flex flex-col items-center gap-4 pb-32">
+      <h2 className="text-center text-4xl font-semibold leading-[2.75rem]">
         Get in Touch
-      </h1>
-      <p className='text-center text-richblack-300 mt-3'>
-        We'd love to here for you, Please fill out this form.
+      </h2>
+      <p className="self-stretch text-center font-inter text-base font-medium text-richblack-300 ">
+        We&apos; d love to here for you, Please fill out this form.
       </p>
-      <div>
-        <ContactUsForm />
-      </div>
+      <ContactUsForm customWidth={" max-w-[460px]  min-w-[400px]"} />
     </div>
   )
 }

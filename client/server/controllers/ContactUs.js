@@ -1,43 +1,50 @@
-const mailSender = require("../utils/mailSender");
+const {
+  contactUsEmailtoUser,
+  contactUsEmailtoService,
+} = require("../mails/templates/contactFormEmail")
+const { mailSender } = require("../utils/mailSender")
+require("dotenv").config()
 
-exports.contactUs = async (req, res) => {
-  const { firstName, lastName, email, message, phoneNo } = req.body;
-  if (!firstName || !email || !message) {
-    return res.status(403).send({
-      success: false,
-      message: "All Fields are required",
-    });
-  }
+exports.contactUsController = async (req, res) => {
+  const { email, firstName, lastName, message, phoneNo, countryCode } = req.body
+  //console.log(req.body)
   try {
-    const data = {
-      firstName,
-      lastName: `${lastName ? lastName : "null"}`,
+    await mailSender(
+      process.env.INFO_MAIL,
+      "Contact Request Recived",
+      contactUsEmailtoService(
+        email,
+        firstName,
+        lastName,
+        message,
+        phoneNo,
+        countryCode
+      )
+    )
+
+    await mailSender(
       email,
-      message,
-      phoneNo: `${phoneNo ? phoneNo : "null"}`,
-    };
-    const info = await mailSender(
-      "sangwanhimanshu8443@gmail.com",
-      "Enquery",
-      `<html><body>${Object.keys(data).map((key) => {
-        return `<p>${key} : ${data[key]}</p>`;
-      })}</body></html>`
-    );
-    if (info) {
-      return res.status(200).send({
-        success: true,
-        message: "Your message has been sent successfully",
-      });
-    } else {
-      return res.status(403).send({
-        success: false,
-        message: "Something went wrong",
-      });
-    }
+      "Your Data sent successfully",
+      contactUsEmailtoUser(
+        email,
+        firstName,
+        lastName,
+        message,
+        phoneNo,
+        countryCode
+      )
+    )
+
+    return res.json({
+      success: true,
+      message: "Email sent successfully",
+    })
   } catch (error) {
-    return res.status(403).send({
+    console.error("Error", error)
+    //console.log("Error message :", error.message)
+    return res.json({
       success: false,
-      message: "Something went wrong",
-    });
+      message: "Something went wrong...",
+    })
   }
-};
+}

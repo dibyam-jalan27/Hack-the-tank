@@ -1,99 +1,97 @@
-import React from 'react'
-import { useParams } from 'react-router'
-import { useState } from 'react';
-import { categories } from '../services/apis';
-import { apiConnector } from '../services/apiConnector';
-import { useEffect } from 'react';
-import CourseSlider from '../Components/core/Catalog/CourseSlider';
-import { getCatalogaPageData } from '../services/operations/pageAndComponentData';
-import CatalogCard from '../Components/core/Catalog/CatalogCard';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
+import { getCategoryData } from "../services/operations/categoryDataAPI"
+import { categories } from "../services/apis"
+import { apiConnector } from "../services/apiConnector"
+import Footer from "../components/common/Footer"
+import CourseSlider from "../components/core/Catalog/CourseSlider"
+import { Loader } from "../components/common/Loader"
 
 const Catalog = () => {
+  const { categoryName } = useParams()
+  const [data, setData] = useState(null)
+  const [selectedCategory, setSelectedCategory] = useState(null)
 
-  const Catalog = useParams();
-  const [Desc, setDesc] = useState([]);
-  const [CatalogPageData, setCatalogPageData] = useState(null);
-  const [categoryID, setcategoryID] = useState(null);
-  const [activeOption, setActiveOption] = useState(1);
-  const dispatch = useDispatch();
+  useEffect(() => {
+    const fetchData = async function () {
+      try {
+        const categoryList = await apiConnector(
+          "GET",
+          categories.CATEGORIES_API
+        )
 
+        let category = categoryList.data.data.filter(
+          (ct) => ct.name.replace(" ", "-").toLowerCase() === categoryName
+        )[0]
 
-  const fetchSublinks=  async ()=>{
-    try {
-        const result = await apiConnector("GET",categories.CATEGORIES_API);
-        const category_id= result.data.data.filter((item)=>item.name=== Catalog.catalog)[0]._id;
-        setcategoryID(category_id);      
-        setDesc(result.data.data.filter((item)=>item.name=== Catalog.catalog)[0]);
-        // console.log("Desc",Desc);  
-        // console.log(category_id);
-    } catch (error) {
-        console.log("could not fetch sublinks");
-        console.log(error);
+        const res = await getCategoryData(category._id)
+        setSelectedCategory(category)
+        setData(res)
+        //console.log(res)
+      } catch (error) {
+        //console.log(error)
+      }
     }
-}
-useEffect(() => {
-    fetchSublinks();
-}, [Catalog])
 
-useEffect(() => {
-    const fetchCatalogPageData = async () => {
-        
-            const result = await getCatalogaPageData(categoryID,dispatch);
-            setCatalogPageData(result);
-            // console.log("page data",CatalogPageData);
-        
+    fetchData()
+
+    return () => {
+      setData(null)
     }
-    if (categoryID) {
-        fetchCatalogPageData();
-    }
-}, [categoryID])
-
-
+  }, [categoryName])
   return (
-    <div>
-      <div className=' box-content bg-richblack-800 px-4'>
-      <div className='mx-auto flex min-h-[260px]  flex-col justify-center gap-4 '>
-        <p className='text-sm text-richblack-300'>Home / Catalog / <span className='text-yellow-25'>{Catalog.catalog}</span> </p>
-        <p className='text-3xl text-richblack-5'>{Catalog?.catalog}</p>
-        <p className='max-w-[870px] text-richblack-200'>
-          {Desc?.description}
-        </p>
-      </div>
-      </div>
-
-      <div className=' mx-auto box-content w-full max-w-maxContentTab px-2 py-12 lg:max-w-maxContent'>
-        <h2 className='Courses to get you started'>
-        Courses to get you started
-        </h2>
-        <div className='my-4 flex border-b border-b-richblack-600 text-sm'>
-          <button onClick={()=>{setActiveOption(1)}}  className={activeOption===1? `px-4 py-2 border-b border-b-yellow-25 text-yellow-25 cursor-pointer`:`px-4 py-2 text-richblack-50 cursor-pointer` }>Most Populer</button>
-          <button onClick={()=>{setActiveOption(2)}} className={activeOption===1?'px-4 py-2 text-richblack-50 cursor-pointer':'px-4 py-2 border-b border-b-yellow-25 text-yellow-25 cursor-pointer'}>New</button>
+    <>
+      {!data ? (
+        <div className="h-[calc(100vh-3.5rem)]">
+          <Loader />
         </div>
-        <CourseSlider Courses={CatalogPageData?.selectedCourses}/>        
-      </div>
-
-      <div className=' mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent'>
-        <h2 className='section_heading mb-6 md:text-3xl text-xl'>
-          Similar to {Catalog.catalog}
-        </h2>
-        <CourseSlider Courses={CatalogPageData?.differentCourses}/>
-      </div>
-      
-      <div className=' mx-auto box-content w-full max-w-maxContentTab px-2 py-12 lg:max-w-maxContent'>
-        <h2 className='section_heading mb-6 md:text-3xl text-xl'>
-          Frequently BoughtTogether
-          </h2>
-          <div className='grid grid-cols-2 gap-3 lg:gap-6 lg:grid-cols-2 pr-4'>
-            {
-              CatalogPageData?.mostSellingCourses?.map((item,index)=>(
-                <CatalogCard key={index} course={item} Height={"h-[100px] lg:h-[400px]"} />
-              ))
-            }
+      ) : (
+        <div className="overflow-auto">
+          <div className="flex min-w-[765px] flex-col gap-3 bg-richblack-800 px-[2rem] py-8 lg:px-[7.5rem]">
+            <div className="flex items-start gap-2 text-richblack-300">
+              <p>Home</p>
+              <p>/</p>
+              <p>Catalog</p>
+              <p>/</p>
+              <p className="text-yellow-50">{selectedCategory?.name}</p>
+            </div>
+            <h1 className="text-3xl md1:text-4xl font-semibold leading-[2.75rem] text-richblack-5">
+              {selectedCategory?.name}
+            </h1>
+            <p className="self-stretch  text-base font-medium text-richblack-300 ">
+              {selectedCategory?.description}
+            </p>
           </div>
-      </div>
-
-    </div>
+          <div className="flex min-w-[765px] flex-col px-[2rem] py-8 lg:px-[7.5rem]">
+            {data?.selectedCourses.length > 0 && (
+              <div>
+                <h1 className="pb-4 text-3xl md1:text-4xl font-semibold leading-[2.75rem] text-richblack-5">
+                  Courses to get you started
+                </h1>
+                <CourseSlider courses={data?.selectedCourses} />
+              </div>
+            )}
+            {data?.differentCourses.length > 0 && (
+              <div>
+                <h1 className="pb-4 text-3xl md1:text-4xl font-semibold leading-[2.75rem] text-richblack-5">
+                  Top Courses
+                </h1>
+                <CourseSlider courses={data?.differentCourses} />
+              </div>
+            )}
+            {data?.mostSellingCourses.length > 0 && (
+              <div>
+                <h1 className="pb-4 text-3xl md1:text-4xl font-semibold leading-[2.75rem] text-richblack-5">
+                  Frequently Bought
+                </h1>
+                <CourseSlider courses={data?.mostSellingCourses} />
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+      <Footer />
+    </>
   )
 }
 

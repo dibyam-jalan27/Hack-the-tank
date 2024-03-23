@@ -1,87 +1,64 @@
-import React from 'react'
-import  {HomePageExplore} from "../../../data/homepage-explore"
-import HighlightText from './HighlightText';
-import { useState } from 'react';
-import CourseCard from './CourseCard';
-
-
-const tabsName = [
-    "Free",
-    "New to coding",
-    "Most popular",
-    "Skills paths",
-    "Career paths",
-];
+import React, { useState } from "react"
+import { HomePageExplore as data } from "../../../data/homepage-explore"
+import HighLightText from "./HighLightText"
+import CourseCard from "./CourseCard"
 
 const ExploreMore = () => {
+  const [currTab, setCurrTab] = useState(data[0].tag)
+  const [courses, setCourses] = useState(data[0].courses)
+  const [currCard, setCurrCard] = useState(data[0].courses[0].heading)
 
-    const [currentTab, setCurrentTab] = useState(tabsName[0]);
-    const [courses, setCourses] = useState(HomePageExplore[0].courses);
-    const [currentCard, setCurrentCard] = useState(HomePageExplore[0].courses[0].heading)
-
-    const setMyCards = (value) => {
-        setCurrentTab(value);
-        const result = HomePageExplore.filter((course) => course.tag === value);
-        setCourses(result[0].courses);
-        setCurrentCard(result[0].courses[0].heading);
-        console.log(result[0].courses);
-    }
-
-
+  const setMyCards = (value) => {
+    setCurrTab(value)
+    const result = data.filter((ele) => ele.tag === value)
+    setCourses(result[0].courses)
+    setCurrCard(result[0].courses[0].heading)
+  }
   return (
-    <div className=''>
-
-      <div className='text-3xl font-semibold text-center lg:text-4xl'>
-        Unlock the 
-        <HighlightText text={"Power of Code"} />
+    <div className="flex translate-y-24 flex-col gap-4 font-inter ">
+      <div className="first-letter text-center font-inter text-4xl font-semibold not-italic  leading-[2.75rem]">
+        Unlock the
+        <HighLightText text={" Power of Code"} />
       </div>
 
-      <p className='text-center text-richblack-300 text-sm text-[16px] mt-3'>
-        Learn to build anything you can imagine
-      </p>  
-
-      <div className='mt-5 flex flex-row rounded-full bg-richblack-800 mb-3 border-richblack-100
-      px-1 py-1'>
-      {
-        tabsName.map( (element, index) => {
-            return (
-                <div
-                className={` text-[13px] lg:text-[16px] flex flex-row items-center gap-2 
-                ${currentTab === element 
-                ? "bg-richblack-900 text-richblack-5 font-medium"
-                : "text-richblack-200" } rounded-full transition-all duration-200 cursor-pointer
-                hover:bg-richblack-900 hover:text-richblack-5 text-center px-3 py-1 lg:px-7 lg:py-2`}
-                key={index}
-                onClick={() => setMyCards(element)}
-                >
-                    {element}
-                </div>
-            )
-        })
-      }
-
+      <div className="mx-auto flex flex-col self-stretch text-center font-inter text-base font-medium text-richblack-300">
+        Learn to Build Anything You Can Imagine
       </div>
 
-      {/* <div className='lg:h-[150px]'></div> */}
-
-      {/* course card ka group */}
-
-      <div className=' flex gap-9 w-full justify-center mt-5 flex-wrap lg:absolute right-0 left-0 mr-auto ml-auto'>
-        {
-            courses.map(  (element, index) => {
-                return (
-                    <CourseCard 
-                    key={index}
-                    cardData = {element}
-                    currentCard = {currentCard}
-                    setCurrentCard = {setCurrentCard}
-                    />
-                )
-            } )
-        }
+      <div className="mx-auto mb-10 flex flex-wrap justify-center rounded-3xl border-richblack-100 bg-richblack-700 px-1 py-1 sm:flex-row">
+        {data.map((ele, index) => {
+          return (
+            <div
+              className={`flex items-center gap-2 text-[16px] 
+                     ${
+                       currTab === ele.tag
+                         ? " bg-richblack-900 font-medium text-richblack-5 "
+                         : " text-white "
+                     } 
+                       cursor-pointer rounded-full px-7 py-2 transition-all duration-200 hover:text-richblack-100`}
+              key={index}
+              onClick={() => {
+                setMyCards(ele.tag)
+              }}
+            >
+              {ele.tag}
+            </div>
+          )
+        })}
       </div>
 
-
+      <div className="flex flex-col items-center justify-center gap-9 px-14 md:flex-row">
+        {courses.map((ele, index) => {
+          return (
+            <CourseCard
+              key={index}
+              currCard={currCard}
+              setCurrCard={setCurrCard}
+              data={ele}
+            />
+          )
+        })}
+      </div>
     </div>
   )
 }
