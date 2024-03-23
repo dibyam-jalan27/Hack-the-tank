@@ -4,6 +4,7 @@ import '../components/css/review.css';
 
 function Review() {
   return (
+    <div className="body">
     <div className="g-review-container">
     <div className="star-widget">
       <input type="radio" name="rate" id="rate-5" />
@@ -28,6 +29,7 @@ function Review() {
         </div>
       </form>
     </div>
+  </div>
   </div>
   )
 }
