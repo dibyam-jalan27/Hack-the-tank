@@ -215,7 +215,7 @@ exports.logIn = async (req, res) => {
 
     if (!user) {
       return res.status(401).json({
-        succes: false,
+        success: false,
         message: "Please SignUp first.",
       })
     }
