@@ -8,12 +8,15 @@ const crypto = require("crypto");
 //Register a user => /api/v1/register
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
   const { name, email, password, phoneNumber } = req.body;
+
   const user = await User.create({
     name,
     email,
     password,
     phoneNumber,
   });
+
+  console.log(user);
 
   sendToken(user, 201, res);
 });
@@ -71,9 +74,7 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
 
   await user.save({ validateBeforeSave: false });
 
-  const reserPasswordUrl = `${req.protocol}://${req.get(
-    "host"
-  )}/api/v1/password/reset/${resetToken}`;
+  const reserPasswordUrl = `${req.protocol}://3000/password/reset/${resetToken}`;
 
   const message = `Your password reset token is as follow:\n\n${reserPasswordUrl}\n\nIf you have not requested this email, then ignore it.`;
 

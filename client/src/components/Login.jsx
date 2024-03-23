@@ -2,26 +2,32 @@ import React, { useState } from "react";
 import { FaYoutube, FaFacebookF, FaInstagram } from "react-icons/fa6";
 import "./css/login.css";
 import { NavLink } from "react-router-dom";
-import { useLogin } from "../actions/useLogin";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const { login, isLoading } = useLogin();
+  const [isLoading, setIsLoading] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
     if (!email || !password) return;
-    login(
-      { email, password },
-      {
-        onSettled: () => {
-          setEmail("");
-          setPassword("");
-        },
-      }
-    );
+    setIsLoading(true);
+    axios
+      .post("http://localhost:5000/api/v1/login", {
+        email,
+        password,
+      })
+      .then((res) => {
+        navigate("/dashboard");
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message);
+      });
+    setIsLoading(false);
   }
   return (
     <div>

@@ -4,29 +4,18 @@ import Forgot from "./components/Forgot";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Signup from "./components/Signup";
 import ResetPassword from "./components/ResetPassword";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Review from "./components/Review";
 import { Toaster } from "react-hot-toast";
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 0,
-    },
-  },
-});
-
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false} />
+    <>
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/forgot" element={<Forgot />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/password/reset/:token" element={<ResetPassword />} />
           <Route path="/review" element={<Review />}></Route>
         </Routes>
       </BrowserRouter>
@@ -50,7 +39,7 @@ function App() {
           },
         }}
       />
-    </QueryClientProvider>
+    </>
   );
 }
 
