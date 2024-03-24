@@ -45,6 +45,7 @@ const {
 const {
   toggleStatus,
   getCourseProgress,
+  updateCertificate,
 } = require("../controllers/CourseProgress")
 
 // ********************************************************************************************************
@@ -75,6 +76,7 @@ router.get("/getAllCourses", getAllCourses)
 router.post("/getFullCourseDetails", getFullCourseDetails)
 router.post("/getCourseDetails", getCourseDetails)
 router.post("/getCourseCertificate", getCourseCertificate)
+router.post("/updateCerti", updateCertificate)
 
 // ********************************************************************************************************
 //                                      Category routes (Only by Admin)

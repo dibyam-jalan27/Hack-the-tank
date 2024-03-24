@@ -89,6 +89,59 @@ exports.toggleStatus = async (req, res) => {
   }
 }
 
+exports.updateCertificate = async (req, res) => {
+  try {
+    const { userId, courseId } = req.body
+    if (!userId || !courseId) {
+      return res.status(400).json({
+        success: false,
+        message: "Details missing.",
+      })
+    }
+
+    const user = await User.findById(userId).populate("courseProgress")
+    if (!user) {
+      return res.status(400).json({
+        success: false,
+        message: "User does not exist.",
+      })
+    }
+    let courseProgress = {}
+
+    for (let ele of user.courseProgress) {
+      if (ele.course.toString() === courseId) {
+        courseProgress = ele
+      }
+    }
+
+    if (!courseProgress) {
+      return res.status(400).json({
+        success: false,
+        message: "Course progress not found.",
+      })
+    }
+
+    const updatedCourseProgress = await CourseProgress.findByIdAndUpdate(
+      courseProgress._id,
+      {
+        certificate: true,
+      },
+      { new: true }
+    )
+
+    return res.status(200).json({
+      success: true,
+      data: updatedCourseProgress,
+      message: "Certificate updated susccesfully.",
+    })
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Error in fetching course progress.",
+    })
+  }
+}
+
 exports.getCourseProgress = async (req, res) => {
   try {
     const userId = req.user.id
