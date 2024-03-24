@@ -8,7 +8,6 @@ const LectureBar = ({ course, setVideo, id, courseProgress }) => {
   const [modalData, setModalData] = useState(null)
 
   return (
-   
     <div className="flex h-full flex-shrink-0 flex-col gap-3 bg-richblack-800 py-7">
       <div className="mx-6 flex flex-col gap-3 border-b border-richblack-600 pb-4">
         <p className="text-lg font-bold text-richblack-25">
@@ -34,7 +33,7 @@ const LectureBar = ({ course, setVideo, id, courseProgress }) => {
               <summary className="ysummary flex items-center justify-between gap-2 bg-richblack-700 px-4 py-2 text-sm font-medium">
                 <div className="flex w-full justify-between">
                   <p className="text-richblack-5 ">{section.sectionName}</p>
-                  <div className="2md:flex gap-2 hidden">
+                  <div className="hidden gap-2 2md:flex">
                     <p className="text-yellow-50 ">
                       {section.subSections.length} Lecture
                       {section.subSections.length > 1 && "s"}

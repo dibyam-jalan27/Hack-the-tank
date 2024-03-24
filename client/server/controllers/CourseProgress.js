@@ -2,6 +2,8 @@ const mongoose = require("mongoose")
 const CourseProgress = require("../models/CourseProgress")
 const User = require("../models/User")
 const Course = require("../models/Course")
+const certificateTemplate = require("../mails/templates/certificateSent")
+const { mailSender } = require("../utils/mailSender")
 
 exports.toggleStatus = async (req, res) => {
   try {
@@ -19,6 +21,15 @@ exports.toggleStatus = async (req, res) => {
       return res.status(400).json({
         success: false,
         message: "User does not exist.",
+      })
+    }
+
+    const course = await Course.findById(courseId).populate("content").exec()
+
+    if (!course) {
+      return res.status(400).json({
+        success: false,
+        message: "Course does not exist.",
       })
     }
     let courseProgress = []
@@ -43,6 +54,28 @@ exports.toggleStatus = async (req, res) => {
       await User.findByIdAndUpdate(userId, {
         $push: { courseProgress: document._id },
       })
+
+      try {
+        await mailSender(
+          user.email,
+          "Course Completion Succesfully.",
+          certificateTemplate(
+            `${user.firstName} ${user.lastName}`,
+            course.courseName,
+            course.learning
+          )
+        )
+        //console.log("Email sent successfully:", emailResponse.response)
+      } catch (error) {
+        // If there's an error sending the email, log the error and return a 500 (Internal Server Error) error
+        console.error("Error occurred while sending email:", error)
+        return res.status(500).json({
+          success: false,
+          message: "Error occurred while sending email",
+          error: error.message,
+        })
+      }
+
       return res.status(200).json({
         success: true,
         data: document,
@@ -73,6 +106,38 @@ exports.toggleStatus = async (req, res) => {
           },
           { new: true }
         )
+      }
+
+      const map = new Map()
+      for (let ele of courseProg) {
+        map.set(
+          ele.course,
+          (ele.completedVideos.length / ele.totalVideos) * 100
+        )
+      }
+      console.log(map.get(courseId))
+      if (map.get(courseId) === 100) {
+        console.log("Certificate sent to user:", user.email)
+        try {
+          await mailSender(
+            user.email,
+            "Course Completion Succesfully.",
+            certificateTemplate(
+              `${user.firstName} ${user.lastName}`,
+              course.courseName,
+              course.learning
+            )
+          )
+          //console.log("Email sent successfully:", emailResponse.response)
+        } catch (error) {
+          // If there's an error sending the email, log the error and return a 500 (Internal Server Error) error
+          console.error("Error occurred while sending email:", error)
+          return res.status(500).json({
+            success: false,
+            message: "Error occurred while sending email",
+            error: error.message,
+          })
+        }
       }
 
       return res.status(200).json({

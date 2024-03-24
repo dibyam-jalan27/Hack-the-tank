@@ -141,6 +141,7 @@ function App() {
         <Route path="/chat" element={<Chat />} />
         <Route path="*" element={<PageNotFound />}></Route>
       </Routes>
+      <Chat />
     </div>
   )
 }

@@ -68,7 +68,7 @@ exports.courseEnrollmentEmail = (courseName, name) => {
     
     <body>
         <div class="container">
-            <a href=${process.env.REACT_APP_LINK}><img class="logo" src="https://i.ibb.co/7Xyj3PC/logo.png"
+            <a href=${process.env.REACT_APP_LINK}><img class="logo" src="https://diy-assets.classplus.co/_next/image?url=https://ali-cdn-diy-public.classplus.co/prod/2_1699159409371.png&w=1920&q=75"
                     alt="StudyNotion Logo"></a>
             <div class="message">Course Registration Confirmation</div>
             <div class="body">

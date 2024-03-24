@@ -239,6 +239,7 @@ const CourseDetails = ({ isStudent }) => {
               <button
                 type="submit"
                 className="rounded-md bg-richblack-800 px-6 py-2 font-medium text-richblack-5 hover:bg-richblack-900"
+                onclick={`/room/${roomCode}`}
               >
                 Join
               </button>

@@ -14,10 +14,10 @@ function Roompage() {
       serverSecret,
       roomId,
       Date.now().toString(),
-      userName
+      "Harshit"
     )
     const zp = ZegoUIKitPrebuilt.create(kitToken)
-    zp.joinroom({
+    zp.joinRoom({
       container: element,
       scenario: {
         mode: ZegoUIKitPrebuilt.LiveStreaming,
@@ -27,12 +27,6 @@ function Roompage() {
 
   return (
     <div>
-      <input
-        type="text"
-        value={userName}
-        onChange={(e) => setUserName(e.target.value)} // Update userName in state
-        placeholder="Enter your username"
-      />
       <div ref={myMeeting} />
     </div>
   )

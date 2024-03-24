@@ -4,7 +4,6 @@ import { GrLinkNext, GrLinkPrevious } from "react-icons/gr"
 import {
   getCourseProgress,
   getDetailsOfCourse,
-  getUserEnrolledCourses,
   updateLectureStatus,
 } from "../services/operations/courseDetailsAPI"
 import { Loader } from "../components/common/Loader"
@@ -21,8 +20,6 @@ import {
 } from "video-react"
 import { useSelector } from "react-redux"
 import IconBtn from "../components/common/IconButton"
-import axios from "axios"
-import { courseEndpoints } from "../services/apis"
 
 const ViewCourse = () => {
   const [video, setVideo] = useState(null)
@@ -30,9 +27,7 @@ const ViewCourse = () => {
   const [loading, setLoading] = useState(false)
   const { courseId } = useParams()
   const { token } = useSelector((state) => state.auth)
-  const { user } = useSelector((state) => state.profile)
   const [courseProg, setcourseProg] = useState(null)
-  const [progress, setProgress] = useState(0)
 
   useEffect(() => {
     async function fetchCourseDetails() {
@@ -45,50 +40,10 @@ const ViewCourse = () => {
       }
       const courseProgress = await getCourseProgress(courseRes._id, token)
       if (courseProgress) setcourseProg(courseProgress)
-      const response = await getUserEnrolledCourses(token)
-      const map = new Map()
-      for (let ele of response.courseProgress) {
-        map.set(
-          ele.course,
-          (ele.completedVideos.length / ele.totalVideos) * 100
-        )
-      }
-      setProgress(map)
     }
     fetchCourseDetails()
   }, [courseId, token])
 
-  console.log(progress.get(course._id))
-
-  useEffect(() => {
-    if (progress.get(course._id) === 100 && !courseProg?.certificate) {
-      axios
-        .post(
-          courseEndpoints.GET_COURSE_CERTIFICATE_API,
-          { courseID: course._id, userID: user._id },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        )
-        .then((res) => {
-          console.log(res.data)
-        })
-
-      axios.post(
-        courseEndpoints.UPDATE_COURSE_CERTIFICATE_API,
-        { courseID: course._id, userID: user._id },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
-    }
-  }, [courseProg, course, progress, token, user._id])
-
-  useEffect(() => {}, [])
   const handleLectureCompletion = async () => {
     setLoading(true)
     const courseProgress = await updateLectureStatus(
