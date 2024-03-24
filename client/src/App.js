@@ -26,6 +26,7 @@ import CourseDetails from "./pages/CourseDetails"
 import ViewCourse from "./pages/ViewCourse"
 import Chat from "./components/common/Chat"
 import Community from "./pages/Community"
+import Roompage from "./pages/Roompage"
 
 function App() {
   const { user } = useSelector((state) => state.profile)
@@ -89,6 +90,7 @@ function App() {
         <Route path="/about" element={<AboutUs />}></Route>
         <Route path="/contact" element={<ContactUs />}></Route>
         <Route path="/catalog/:categoryName" element={<Catalog />}></Route>
+        <Route path="/room/:roomId" element={<Roompage />}></Route>
         <Route
           path="/courses/:courseId"
           element={

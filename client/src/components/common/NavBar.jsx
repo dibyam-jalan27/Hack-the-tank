@@ -8,6 +8,7 @@ import { PiShoppingCart } from "react-icons/pi"
 import { apiConnector } from "../../services/apiConnector"
 import { categories } from "../../services/apis"
 import { IoIosArrowDropdownCircle } from "react-icons/io"
+
 // import { FaRocketchat } from "react-icons/fa6"
 import { logout } from "../../services/operations/authAPI"
 
@@ -114,9 +115,9 @@ export const Navbar = () => {
               )
             })}
             <li>
-              <Link to="community" className="text-richblack-800">
+              <a href="http://localhost:3001" className="text-richblack-800">
                 Community
-              </Link>
+              </a>
             </li>
           </ul>
         </nav>

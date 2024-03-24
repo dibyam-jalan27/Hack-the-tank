@@ -1,131 +1,131 @@
 export const HomePageExplore = [
   {
-    tag: "Free",
+    tag: "Beginner Basics",
     courses: [
       {
-        heading: "Learn HTML",
+        heading: "Basic Sewing Techniques",
         description:
-          "This course covers the basic concepts of HTML including creating and structuring web pages, adding text, links, images, and more.",
+          "Learn fundamental sewing techniques including stitching, hemming, and seam finishing.",
         level: "Beginner",
-        lessionNumber: 6,
+        lessonNumber: 6,
       },
       {
-        heading: "Learn CSS",
+        heading: "Introduction to Tailoring",
         description:
-          "This course explores advanced topics in HTML5 and CSS3, including animations, transitions, and layout techniques",
+          "Discover the basics of tailoring, from taking measurements to constructing simple garments.",
         level: "Beginner",
-        lessionNumber: 6,
+        lessonNumber: 6,
       },
       {
-        heading: "Responsive Web design",
+        heading: "Fabric Selection 101",
         description:
-          "This course teaches responsive web design techniques, allowing web pages to adapt to different devices and screen sizes",
+          "Understand different types of fabrics and their suitability for various sewing projects.",
         level: "Beginner",
-        lessionNumber: 6,
+        lessonNumber: 6,
       },
     ],
   },
   {
-    tag: "New to coding",
+    tag: "Intermediate Skills",
     courses: [
       {
-        heading: "HTML",
+        heading: "Advanced Stitching Techniques",
         description:
-          "This course covers the basic concepts of HTML including creating and structuring web pages, adding text, links, images, and more.",
-        level: "Beginner",
-        lessionNumber: 6,
+          "Explore more complex stitching methods such as pleating, gathering, and decorative stitches.",
+        level: "Intermediate",
+        lessonNumber: 6,
       },
       {
-        heading: "CSS",
+        heading: "Pattern Alteration",
         description:
-          "This course explores advanced topics in HTML5 and CSS3, including animations, transitions, and layout techniques",
-        level: "Beginner",
-        lessionNumber: 6,
+          "Learn how to modify commercial patterns to achieve the perfect fit for your body.",
+        level: "Intermediate",
+        lessonNumber: 6,
       },
       {
-        heading: "Responsive ",
+        heading: "Garment Construction",
         description:
-          "This course teaches responsive web design techniques, allowing web pages to adapt to different devices and screen sizes",
-        level: "Beginner",
-        lessionNumber: 6,
+          "Master the construction process of garments, from cutting to assembling.",
+        level: "Intermediate",
+        lessonNumber: 6,
       },
     ],
   },
   {
-    tag: "Most popular",
+    tag: "Advanced Techniques",
     courses: [
       {
-        heading: "Java",
+        heading: "Couture Sewing Techniques",
         description:
-          "This course covers the basic concepts of HTML including creating and structuring web pages, adding text, links, images, and more.",
-        level: "Beginner",
-        lessionNumber: 6,
+          "Delve into advanced sewing techniques used in haute couture, including hand stitching and embellishment.",
+        level: "Advanced",
+        lessonNumber: 6,
       },
       {
-        heading: "Python",
+        heading: "Tailoring Masterclass",
         description:
-          "This course explores advanced topics in HTML5 and CSS3, including animations, transitions, and layout techniques",
-        level: "Beginner",
-        lessionNumber: 6,
+          "Refine your tailoring skills with advanced topics such as fitting, interlining, and finishing.",
+        level: "Advanced",
+        lessonNumber: 6,
       },
       {
-        heading: "CSS",
+        heading: "Creative Pattern Making",
         description:
-          "This course teaches responsive web design techniques, allowing web pages to adapt to different devices and screen sizes",
-        level: "Beginner",
-        lessionNumber: 6,
+          "Explore innovative pattern-making techniques to create unique and avant-garde designs.",
+        level: "Advanced",
+        lessonNumber: 6,
       },
     ],
   },
   {
-    tag: "Skills paths",
+    tag: "Specialty Workshops",
     courses: [
       {
-        heading: "Flask",
+        heading: "Embroidery Essentials",
         description:
-          "This course covers the basic concepts of HTML including creating and structuring web pages, adding text, links, images, and more.",
-        level: "Beginner",
-        lessionNumber: 6,
+          "Learn the art of embroidery, from basic stitches to intricate designs.",
+        level: "All Levels",
+        lessonNumber: 6,
       },
       {
-        heading: "Django",
+        heading: "Leather Crafting",
         description:
-          "This course explores advanced topics in HTML5 and CSS3, including animations, transitions, and layout techniques",
-        level: "Beginner",
-        lessionNumber: 6,
+          "Discover the techniques of working with leather to create stunning accessories and garments.",
+        level: "All Levels",
+        lessonNumber: 6,
       },
       {
-        heading: "Fast API",
+        heading: "Quilting Techniques",
         description:
-          "This course teaches responsive web design techniques, allowing web pages to adapt to different devices and screen sizes",
-        level: "Beginner",
-        lessionNumber: 6,
+          "Master the art of quilting with techniques for piecing, appliqué, and finishing.",
+        level: "All Levels",
+        lessonNumber: 6,
       },
     ],
   },
   {
-    tag: "Career paths",
+    tag: "Fashion Design Fundamentals",
     courses: [
       {
-        heading: "Next.js",
+        heading: "Fashion Sketching",
         description:
-          "This course covers the basic concepts of HTML including creating and structuring web pages, adding text, links, images, and more.",
-        level: "Beginner",
-        lessionNumber: 6,
+          "Learn to sketch fashion designs and create professional-looking fashion illustrations.",
+        level: "All Levels",
+        lessonNumber: 6,
       },
       {
-        heading: "Nuxt.js",
+        heading: "Color Theory for Designers",
         description:
-          "This course explores advanced topics in HTML5 and CSS3, including animations, transitions, and layout techniques",
-        level: "Beginner",
-        lessionNumber: 6,
+          "Understand the principles of color theory and its application in fashion design.",
+        level: "All Levels",
+        lessonNumber: 6,
       },
       {
-        heading: "Sanity",
+        heading: "Fashion Trend Analysis",
         description:
-          "This course teaches responsive web design techniques, allowing web pages to adapt to different devices and screen sizes",
-        level: "Beginner",
-        lessionNumber: 6,
+          "Explore current fashion trends and learn to forecast future trends in the fashion industry.",
+        level: "All Levels",
+        lessonNumber: 6,
       },
     ],
   },

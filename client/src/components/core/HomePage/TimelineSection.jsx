@@ -24,7 +24,7 @@ const data = [
   {
     logo: Logo4,
     heading: "Solve the problem",
-    desc: "Code your way to a solution",
+    desc: "Learn your way to a solution",
   },
 ]
 const TimeLineSection = () => {

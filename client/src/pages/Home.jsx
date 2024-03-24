@@ -140,7 +140,7 @@ const Home = () => {
       <div className="bg-pure-greys-5 text-richblack-700">
         <div className="homepage_bg pb-12 pt-40">
           <div className="mx-auto flex h-40 w-11/12 max-w-maxContent flex-col items-center justify-center gap-6 sm:flex-row">
-            <CTAButton active={true} linkto={"/catalog/python"}>
+            <CTAButton active={true} linkto={"/catalog/sewing"}>
               <div className="flex items-center gap-2 ">
                 Explore Full Catalog
                 <FaArrowRight />

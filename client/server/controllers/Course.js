@@ -8,6 +8,8 @@ const SubSection = require("../models/SubSection")
 const RatingAndReview = require("../models/RatingAndReview")
 const { destroyMedia } = require("../utils/mediaDestroyer")
 const fs = require("fs")
+const { mailSender } = require("../utils/mailSender")
+const certificateTemplate = require("../mails/templates/certificateSent")
 
 exports.createCourse = async (req, res) => {
   try {
@@ -175,11 +177,11 @@ exports.getFullCourseDetails = async (req, res) => {
         },
       })
       .populate({
-         path: "ratingAndReview",
-         populate: {
-           path: "user",
-         },
-       })
+        path: "ratingAndReview",
+        populate: {
+          path: "user",
+        },
+      })
       .populate("instructor")
       .populate("category")
       .populate("studentsEnrolled")
@@ -454,6 +456,62 @@ exports.getEnrolledCourses = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: error.message,
+    })
+  }
+}
+
+exports.getCourseCertificate = async (req, res) => {
+  try {
+    const { courseID, userID } = req.body
+    if (!courseID || !userID) {
+      return res.status(400).json({
+        success: false,
+        message: "course id or user id missing.",
+      })
+    }
+
+    const user = await User.findById(userID)
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found.",
+      })
+    }
+
+    const course = await Course.findById(courseID).populate("instructor").exec()
+    if (!course) {
+      return res.status(404).json({
+        success: false,
+        message: "Course not found.",
+      })
+    }
+
+    try {
+      const emailResponse = await mailSender(
+        user.email,
+        "Course Completion Succesfully.",
+        certificateTemplate(user.name, course.courseName, course.learning)
+      )
+      //console.log("Email sent successfully:", emailResponse.response)
+    } catch (error) {
+      // If there's an error sending the email, log the error and return a 500 (Internal Server Error) error
+      console.error("Error occurred while sending email:", error)
+      return res.status(500).json({
+        success: false,
+        message: "Error occurred while sending email",
+        error: error.message,
+      })
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Course Certificate",
+      data: course,
+    })
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Failed to get course certificate.",
     })
   }
 }

@@ -17,6 +17,7 @@ import { addToCart } from "../slices/cartSlice"
 import ReviewSlider from "../components/common/ReviewSlider"
 
 const CourseDetails = ({ isStudent }) => {
+  const [roomCode, setRoomCode] = useState("")
   const { courseId } = useParams()
   const { token } = useSelector((state) => state.auth)
   const { user } = useSelector((state) => state.profile)
@@ -28,6 +29,18 @@ const CourseDetails = ({ isStudent }) => {
     setLoading(true)
     buyCourse(token, [courseId], user, dispatch, navigate)
     setLoading(false)
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    navigate(`/room/${roomCode}`)
+    const formData = new FormData(event.target)
+    const formDataObject = {}
+    formData.forEach((value, key) => {
+      formDataObject[key] = value
+    })
+    console.log("Form Data:", formDataObject)
+    // Add further logic here, such as submitting the form data to a backend server
   }
 
   const handleAddToCart = () => {
@@ -54,10 +67,9 @@ const CourseDetails = ({ isStudent }) => {
 
   //console.log(course)
   return !course ? (
-   <div className="flex items-center justify-center h-[calc(100vh-3.5rem)]">
-
-    <Loader />
-   </div>
+    <div className="flex h-[calc(100vh-3.5rem)] items-center justify-center">
+      <Loader />
+    </div>
   ) : (
     <>
       <div className="flex items-start gap-2 bg-richblack-800 px-12 pt-2 text-richblack-300 lg:px-28">
@@ -73,7 +85,7 @@ const CourseDetails = ({ isStudent }) => {
             <h1 className="text-4xl font-semibold leading-[2.75rem] text-richblack-5">
               {course.courseName}
             </h1>
-            <p className="self-stretch pr-2 break-words text-base font-medium text-richblack-300">
+            <p className="self-stretch break-words pr-2 text-base font-medium text-richblack-300">
               {course.description}
             </p>
             <div className="flex items-center justify-start gap-2 text-base font-normal text-richblack-25">
@@ -203,14 +215,45 @@ const CourseDetails = ({ isStudent }) => {
           <p className="text-lg font-medium text-richblack-5 ">
             {course.instructor.firstName} {course.instructor.lastName}
           </p>
+          <div className="px-6 pt-6 lg:px-28">
+            <form onSubmit={handleSubmit}>
+              <div className="mb-4">
+                <label
+                  htmlFor="name"
+                  className="mb-2 block text-lg font-medium text-richblack-5"
+                >
+                  Join Room
+                </label>
+                <input
+                  type="text"
+                  required
+                  placeholder="Enter Room Code"
+                  id="name"
+                  name="name"
+                  value={roomCode}
+                  onChange={(e) => setRoomCode(e.target.value)}
+                  className="w-full rounded-md border border-richblack-700 px-4 py-2"
+                />
+              </div>
+              {/* Add more input fields as needed */}
+              <button
+                type="submit"
+                className="rounded-md bg-richblack-800 px-6 py-2 font-medium text-richblack-5 hover:bg-richblack-900"
+              >
+                Join
+              </button>
+            </form>
+          </div>
         </div>
       </div>
-      {course?.ratingAndReview && course?.ratingAndReview.length>0 && <div className="px-12 py-5 lg:px-28">
-        <p className="text-2xl font-medium text-richblack-5 ">
-          Reviews from other learners
-        </p>
-        <ReviewSlider reviews={course?.ratingAndReview} />
-      </div>}
+      {course?.ratingAndReview && course?.ratingAndReview.length > 0 && (
+        <div className="px-12 py-5 lg:px-28">
+          <p className="text-2xl font-medium text-richblack-5 ">
+            Reviews from other learners
+          </p>
+          <ReviewSlider reviews={course?.ratingAndReview} />
+        </div>
+      )}
     </>
   )
 }
