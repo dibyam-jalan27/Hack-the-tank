@@ -9,6 +9,7 @@ const {
   getCourseDetails,
   getEnrolledCourses,
   getInstructorCourses,
+  getCourseCertificate,
 } = require("../controllers/Course")
 const {
   createSection,
@@ -73,6 +74,7 @@ router.get("/getAllCourses", getAllCourses)
 // Get Details for a Specific Courses
 router.post("/getFullCourseDetails", getFullCourseDetails)
 router.post("/getCourseDetails", getCourseDetails)
+router.post("/getCourseCertificate", getCourseCertificate)
 
 // ********************************************************************************************************
 //                                      Category routes (Only by Admin)

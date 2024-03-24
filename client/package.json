@@ -5,6 +5,7 @@
   "dependencies": {
     "@ramonak/react-progress-bar": "^5.1.1",
     "@reduxjs/toolkit": "^1.9.5",
+    "@zegocloud/zego-uikit-prebuilt": "^2.0.0",
     "axios": "^1.4.0",
     "concurrently": "^8.2.0",
     "otp-input-react": "^0.3.0",

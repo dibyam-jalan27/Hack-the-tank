@@ -14,6 +14,10 @@ const courseProgressSchema = new mongoose.Schema({
       ref: "SubSection",
     },
   ],
+  certificate: {
+    type: Boolean,
+    default: false,
+  },
 })
 
 module.exports = mongoose.model("CourseProgress", courseProgressSchema)

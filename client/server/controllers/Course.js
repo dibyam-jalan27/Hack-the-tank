@@ -490,7 +490,11 @@ exports.getCourseCertificate = async (req, res) => {
       const emailResponse = await mailSender(
         user.email,
         "Course Completion Succesfully.",
-        certificateTemplate(user.name, course.courseName, course.learning)
+        certificateTemplate(
+          `${user.firstName} ${user.lastName}`,
+          course.courseName,
+          course.learning
+        )
       )
       //console.log("Email sent successfully:", emailResponse.response)
     } catch (error) {
