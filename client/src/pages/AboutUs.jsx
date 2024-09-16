@@ -1,6 +1,6 @@
 import React from "react"
 import Footer from "../components/common/Footer"
-import HighLightText from "../components/core/HomePage/HighLightText"
+import HighLightText from "../components/core/HomePage/HighlightText"
 import foundingImg from "../assets/Images/FoundingStory.png"
 import { FaQuoteRight, FaQuoteLeft } from "react-icons/fa"
 import Stats from "../components/core/AboutPage/Stats"
